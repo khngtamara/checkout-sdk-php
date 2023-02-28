@@ -1,6 +1,6 @@
 {
-    "name": "checkout/checkout-tamara-sdk-php",
-    "description": "Checkout.com SDK for PHP",
+    "name": "tamara/checkout-tamara-sdk-php",
+    "description": "Tamara Forked Checkout.com SDK for PHP",
     "homepage": "https://github.com/checkout/checkout-sdk-php",
     "type": "library",
     "license": "MIT",
