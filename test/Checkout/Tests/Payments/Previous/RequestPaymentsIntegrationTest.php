@@ -2,16 +2,16 @@
 
 namespace Checkout\Tests\Payments\Previous;
 
-use Checkout\CheckoutApiException;
-use Checkout\Common\Currency;
-use Checkout\Common\CustomerRequest;
-use Checkout\Payments\Aggregator;
-use Checkout\Payments\Previous\PaymentRequest;
-use Checkout\Payments\ProcessingSettings;
-use Checkout\Payments\Previous\Source\RequestCardSource;
-use Checkout\Payments\Previous\Source\RequestTokenSource;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\Common\Currency;
+use Checkout\Tamara\Common\CustomerRequest;
+use Checkout\Tamara\Payments\Aggregator;
+use Checkout\Tamara\Payments\Previous\PaymentRequest;
+use Checkout\Tamara\Payments\ProcessingSettings;
+use Checkout\Tamara\Payments\Previous\Source\RequestCardSource;
+use Checkout\Tamara\Payments\Previous\Source\RequestTokenSource;
 use Checkout\Tests\TestCardSource;
-use Checkout\Tokens\CardTokenRequest;
+use Checkout\Tamara\Tokens\CardTokenRequest;
 use DateTime;
 
 class RequestPaymentsIntegrationTest extends AbstractPaymentsIntegrationTest
@@ -19,7 +19,7 @@ class RequestPaymentsIntegrationTest extends AbstractPaymentsIntegrationTest
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldMakeCardPayment()
     {
@@ -70,7 +70,7 @@ class RequestPaymentsIntegrationTest extends AbstractPaymentsIntegrationTest
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldMakeCard3dsPayment()
     {
@@ -91,7 +91,7 @@ class RequestPaymentsIntegrationTest extends AbstractPaymentsIntegrationTest
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldMakeCard3dsPaymentN3d()
     {
@@ -141,7 +141,7 @@ class RequestPaymentsIntegrationTest extends AbstractPaymentsIntegrationTest
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldTokenPayment()
     {
@@ -192,7 +192,7 @@ class RequestPaymentsIntegrationTest extends AbstractPaymentsIntegrationTest
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldMakePaymentsIdempotent()
     {
@@ -226,7 +226,7 @@ class RequestPaymentsIntegrationTest extends AbstractPaymentsIntegrationTest
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldMakePaymentsWithAggregator()
     {

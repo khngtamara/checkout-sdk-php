@@ -1,0 +1,82 @@
+<?php
+
+namespace Checkout\Tamara\Instruments\Update;
+
+use Checkout\Tamara\Common\AccountHolder;
+use Checkout\Tamara\Common\BankDetails;
+use Checkout\Tamara\Common\InstrumentType;
+use Checkout\Tamara\Instruments\Update\UpdateCustomerRequest;
+use Checkout\Tamara\Instruments\Update\UpdateInstrumentRequest;
+
+class UpdateBankInstrumentRequest extends UpdateInstrumentRequest
+{
+    public function __construct()
+    {
+        parent::__construct(InstrumentType::$bank_account);
+    }
+
+    /**
+     * @var string value of AccountType
+     */
+    public $account_type;
+
+    /**
+     * @var string
+     */
+    public $account_number;
+
+    /**
+     * @var string
+     */
+    public $bank_code;
+
+    /**
+     * @var string
+     */
+    public $branch_code;
+
+    /**
+     * @var string
+     */
+    public $iban;
+
+    /**
+     * @var string
+     */
+    public $bban;
+
+    /**
+     * @var string
+     */
+    public $swift_bic;
+
+    /**
+     * @var string value of Currency
+     */
+    public $currency;
+
+    /**
+     * @var string values of Country
+     */
+    public $country;
+
+    /**
+     * @var string
+     */
+    public $processing_channel_id;
+
+    /**
+     * @var AccountHolder
+     */
+    public $account_holder;
+
+    /**
+     * @var BankDetails
+     */
+    public $bank_details;
+
+    /**
+     * @var UpdateCustomerRequest
+     */
+    public $customer;
+}

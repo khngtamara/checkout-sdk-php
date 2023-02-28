@@ -2,32 +2,32 @@
 
 namespace Checkout\Tests\Sessions;
 
-use Checkout\CheckoutApiException;
-use Checkout\CheckoutArgumentException;
-use Checkout\CheckoutAuthorizationException;
-use Checkout\CheckoutException;
-use Checkout\Common\ChallengeIndicatorType;
-use Checkout\Common\Country;
-use Checkout\Common\Currency;
-use Checkout\Common\Phone;
-use Checkout\PlatformType;
-use Checkout\Sessions\AuthenticationType;
-use Checkout\Sessions\Category;
-use Checkout\Sessions\Channel\AppSession;
-use Checkout\Sessions\Channel\BrowserSession;
-use Checkout\Sessions\Channel\ChannelData;
-use Checkout\Sessions\Channel\SdkEphemeralPublicKey;
-use Checkout\Sessions\Channel\SdkInterfaceType;
-use Checkout\Sessions\Channel\ThreeDsMethodCompletion;
-use Checkout\Sessions\Completion\HostedCompletionInfo;
-use Checkout\Sessions\Completion\NonHostedCompletionInfo;
-use Checkout\Sessions\SessionAddress;
-use Checkout\Sessions\SessionMarketplaceData;
-use Checkout\Sessions\SessionRequest;
-use Checkout\Sessions\SessionsBillingDescriptor;
-use Checkout\Sessions\Source\SessionCardSource;
-use Checkout\Sessions\TransactionType;
-use Checkout\Sessions\UIElements;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\CheckoutArgumentException;
+use Checkout\Tamara\CheckoutAuthorizationException;
+use Checkout\Tamara\CheckoutException;
+use Checkout\Tamara\Common\ChallengeIndicatorType;
+use Checkout\Tamara\Common\Country;
+use Checkout\Tamara\Common\Currency;
+use Checkout\Tamara\Common\Phone;
+use Checkout\Tamara\PlatformType;
+use Checkout\Tamara\Sessions\AuthenticationType;
+use Checkout\Tamara\Sessions\Category;
+use Checkout\Tamara\Sessions\Channel\AppSession;
+use Checkout\Tamara\Sessions\Channel\BrowserSession;
+use Checkout\Tamara\Sessions\Channel\ChannelData;
+use Checkout\Tamara\Sessions\Channel\SdkEphemeralPublicKey;
+use Checkout\Tamara\Sessions\Channel\SdkInterfaceType;
+use Checkout\Tamara\Sessions\Channel\ThreeDsMethodCompletion;
+use Checkout\Tamara\Sessions\Completion\HostedCompletionInfo;
+use Checkout\Tamara\Sessions\Completion\NonHostedCompletionInfo;
+use Checkout\Tamara\Sessions\SessionAddress;
+use Checkout\Tamara\Sessions\SessionMarketplaceData;
+use Checkout\Tamara\Sessions\SessionRequest;
+use Checkout\Tamara\Sessions\SessionsBillingDescriptor;
+use Checkout\Tamara\Sessions\Source\SessionCardSource;
+use Checkout\Tamara\Sessions\TransactionType;
+use Checkout\Tamara\Sessions\UIElements;
 use Checkout\Tests\SandboxTestFixture;
 use Checkout\Tests\TestCardSource;
 
@@ -38,7 +38,7 @@ abstract class AbstractSessionsIntegrationTest extends SandboxTestFixture
      * @before
      * @throws CheckoutAuthorizationException
      * @throws CheckoutArgumentException
-     * @throws CheckoutException
+     * @throws \Checkout\Tamara\CheckoutException
      */
     public function before()
     {
@@ -51,7 +51,7 @@ abstract class AbstractSessionsIntegrationTest extends SandboxTestFixture
      * @param string $challengeIndicatorType
      * @param string $transactionType
      * @return mixed
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     protected function createNonHostedSession(
         ChannelData $channelData,
@@ -129,7 +129,7 @@ abstract class AbstractSessionsIntegrationTest extends SandboxTestFixture
 
     /**
      * @return mixed
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     protected function createHostedSession()
     {
@@ -155,11 +155,11 @@ abstract class AbstractSessionsIntegrationTest extends SandboxTestFixture
         $sessionRequest->amount = 100;
         $sessionRequest->currency = Currency::$USD;
         $sessionRequest->processing_channel_id = "pc_5jp2az55l3cuths25t5p3xhwru";
-        $sessionRequest->authentication_type = AuthenticationType::$regular;
-        $sessionRequest->authentication_category = Category::$payment;
+        $sessionRequest->authentication_type = \Checkout\Tamara\Sessions\AuthenticationType::$regular;
+        $sessionRequest->authentication_category = \Checkout\Tamara\Sessions\Category::$payment;
         $sessionRequest->challenge_indicator = ChallengeIndicatorType::$no_preference;
         $sessionRequest->reference = "ORD-5023-4E89";
-        $sessionRequest->transaction_type = TransactionType::$goods_service;
+        $sessionRequest->transaction_type = \Checkout\Tamara\Sessions\TransactionType::$goods_service;
         $sessionRequest->shipping_address = $shippingAddress;
         $sessionRequest->completion = $hostedCompletionInfo;
 
@@ -202,7 +202,7 @@ abstract class AbstractSessionsIntegrationTest extends SandboxTestFixture
         $appSession->sdk_reference_number = "3DS_LOA_SDK_PPFU_020100_00007";
         $appSession->sdk_transaction_id = "b2385523-a66c-4907-ac3c-91848e8c0067";
         $appSession->sdk_interface_type = SdkInterfaceType::$both;
-        $appSession->sdk_ui_elements = array(UIElements::$single_select, UIElements::$html_other);
+        $appSession->sdk_ui_elements = array(UIElements::$single_select, \Checkout\Tamara\Sessions\UIElements::$html_other);
 
         return $appSession;
     }

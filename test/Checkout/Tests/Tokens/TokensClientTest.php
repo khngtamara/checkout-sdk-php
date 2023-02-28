@@ -2,13 +2,13 @@
 
 namespace Checkout\Tests\Tokens;
 
-use Checkout\CheckoutApiException;
-use Checkout\PlatformType;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\UnitTestFixture;
-use Checkout\Tokens\ApplePayTokenRequest;
-use Checkout\Tokens\CardTokenRequest;
-use Checkout\Tokens\GooglePayTokenRequest;
-use Checkout\Tokens\TokensClient;
+use Checkout\Tamara\Tokens\ApplePayTokenRequest;
+use Checkout\Tamara\Tokens\CardTokenRequest;
+use Checkout\Tamara\Tokens\GooglePayTokenRequest;
+use Checkout\Tamara\Tokens\TokensClient;
 
 class TokensClientTest extends UnitTestFixture
 {
@@ -38,13 +38,13 @@ class TokensClientTest extends UnitTestFixture
             ->method("post")
             ->willReturn("foo");
 
-        $response = $this->client->requestCardToken(new CardTokenRequest());
+        $response = $this->client->requestCardToken(new \Checkout\Tamara\Tokens\CardTokenRequest());
         $this->assertNotNull($response);
     }
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldRequestWalletToken()
     {

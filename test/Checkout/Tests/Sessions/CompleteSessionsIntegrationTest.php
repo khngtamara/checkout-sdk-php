@@ -2,8 +2,8 @@
 
 namespace Checkout\Tests\Sessions;
 
-use Checkout\CheckoutApiException;
-use Checkout\CheckoutAuthorizationException;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\CheckoutAuthorizationException;
 
 class CompleteSessionsIntegrationTest extends AbstractSessionsIntegrationTest
 {

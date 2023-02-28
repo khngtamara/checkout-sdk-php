@@ -2,25 +2,25 @@
 
 namespace Checkout\Tests\Payments\Hosted;
 
-use Checkout\CheckoutApiException;
-use Checkout\CheckoutArgumentException;
-use Checkout\CheckoutAuthorizationException;
-use Checkout\CheckoutException;
-use Checkout\Common\Country;
-use Checkout\Common\Currency;
-use Checkout\Common\CustomerRequest;
-use Checkout\Common\PaymentSourceType;
-use Checkout\Common\Product;
-use Checkout\Payments\BillingDescriptor;
-use Checkout\Payments\BillingInformation;
-use Checkout\Payments\Hosted\HostedPaymentsSessionRequest;
-use Checkout\Payments\PaymentRecipient;
-use Checkout\Payments\PaymentType;
-use Checkout\Payments\ProcessingSettings;
-use Checkout\Payments\RiskRequest;
-use Checkout\Payments\ShippingDetails;
-use Checkout\Payments\ThreeDsRequest;
-use Checkout\PlatformType;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\CheckoutArgumentException;
+use Checkout\Tamara\CheckoutAuthorizationException;
+use Checkout\Tamara\CheckoutException;
+use Checkout\Tamara\Common\Country;
+use Checkout\Tamara\Common\Currency;
+use Checkout\Tamara\Common\CustomerRequest;
+use Checkout\Tamara\Common\PaymentSourceType;
+use Checkout\Tamara\Common\Product;
+use Checkout\Tamara\Payments\BillingDescriptor;
+use Checkout\Tamara\Payments\BillingInformation;
+use Checkout\Tamara\Payments\Hosted\HostedPaymentsSessionRequest;
+use Checkout\Tamara\Payments\PaymentRecipient;
+use Checkout\Tamara\Payments\PaymentType;
+use Checkout\Tamara\Payments\ProcessingSettings;
+use Checkout\Tamara\Payments\RiskRequest;
+use Checkout\Tamara\Payments\ShippingDetails;
+use Checkout\Tamara\Payments\ThreeDsRequest;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\SandboxTestFixture;
 
 class HostedPaymentsIntegrationTest extends SandboxTestFixture
@@ -28,7 +28,7 @@ class HostedPaymentsIntegrationTest extends SandboxTestFixture
 
     /**
      * @before
-     * @throws CheckoutAuthorizationException
+     * @throws \Checkout\Tamara\CheckoutAuthorizationException
      * @throws CheckoutArgumentException
      * @throws CheckoutException
      */
@@ -130,7 +130,7 @@ class HostedPaymentsIntegrationTest extends SandboxTestFixture
         $billingDescriptor->city = "London";
         $billingDescriptor->name = "Awesome name";
 
-        $hostedPaymentRequest = new HostedPaymentsSessionRequest();
+        $hostedPaymentRequest = new \Checkout\Tamara\Payments\Hosted\HostedPaymentsSessionRequest();
         $hostedPaymentRequest->amount = 1000;
         $hostedPaymentRequest->reference = "reference";
         $hostedPaymentRequest->currency = Currency::$GBP;

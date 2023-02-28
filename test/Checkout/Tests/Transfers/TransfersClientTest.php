@@ -2,11 +2,11 @@
 
 namespace Checkout\Tests\Transfers;
 
-use Checkout\CheckoutApiException;
-use Checkout\PlatformType;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\UnitTestFixture;
-use Checkout\Transfers\CreateTransferRequest;
-use Checkout\Transfers\TransfersClient;
+use Checkout\Tamara\Transfers\CreateTransferRequest;
+use Checkout\Tamara\Transfers\TransfersClient;
 
 class TransfersClientTest extends UnitTestFixture
 {
@@ -29,7 +29,7 @@ class TransfersClientTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldInitiateTransferOfFunds()
     {
@@ -37,7 +37,7 @@ class TransfersClientTest extends UnitTestFixture
             ->method("post")
             ->willReturn("response");
 
-        $transferRequest = new CreateTransferRequest();
+        $transferRequest = new \Checkout\Tamara\Transfers\CreateTransferRequest();
 
         $response = $this->client->initiateTransferOfFunds($transferRequest);
 

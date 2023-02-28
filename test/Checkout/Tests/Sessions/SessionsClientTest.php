@@ -2,18 +2,18 @@
 
 namespace Checkout\Tests\Sessions;
 
-use Checkout\CheckoutApiException;
-use Checkout\PlatformType;
-use Checkout\Sessions\Channel\AppSession;
-use Checkout\Sessions\SessionRequest;
-use Checkout\Sessions\SessionsClient;
-use Checkout\Sessions\ThreeDsMethodCompletionRequest;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\PlatformType;
+use Checkout\Tamara\Sessions\Channel\AppSession;
+use Checkout\Tamara\Sessions\SessionRequest;
+use Checkout\Tamara\Sessions\SessionsClient;
+use Checkout\Tamara\Sessions\ThreeDsMethodCompletionRequest;
 use Checkout\Tests\UnitTestFixture;
 
 class SessionsClientTest extends UnitTestFixture
 {
     /**
-     * @var SessionsClient
+     * @var \Checkout\Tamara\Sessions\SessionsClient
      */
     private $client;
 
@@ -23,12 +23,12 @@ class SessionsClientTest extends UnitTestFixture
     public function init()
     {
         $this->initMocks(PlatformType::$default_oauth);
-        $this->client = new SessionsClient($this->apiClient, $this->configuration);
+        $this->client = new \Checkout\Tamara\Sessions\SessionsClient($this->apiClient, $this->configuration);
     }
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldRequestSessionCreateSessionOkResponse()
     {
@@ -36,7 +36,7 @@ class SessionsClientTest extends UnitTestFixture
             ->method("post")
             ->willReturn("response");
 
-        $response = $this->client->requestSession(new SessionRequest());
+        $response = $this->client->requestSession(new \Checkout\Tamara\Sessions\SessionRequest());
         $this->assertNotNull($response);
     }
 
@@ -127,7 +127,7 @@ class SessionsClientTest extends UnitTestFixture
             ->method("put")
             ->willReturn("response");
 
-        $response = $this->client->updateThreeDsMethodCompletionIndicator("id", new ThreeDsMethodCompletionRequest());
+        $response = $this->client->updateThreeDsMethodCompletionIndicator("id", new \Checkout\Tamara\Sessions\ThreeDsMethodCompletionRequest());
         $this->assertNotNull($response);
     }
 
@@ -140,7 +140,7 @@ class SessionsClientTest extends UnitTestFixture
             ->method("put")
             ->willReturn("response");
 
-        $response = $this->client->updateThreeDsMethodCompletionIndicator("id", new ThreeDsMethodCompletionRequest(), "sessionSecr3t");
+        $response = $this->client->updateThreeDsMethodCompletionIndicator("id", new \Checkout\Tamara\Sessions\ThreeDsMethodCompletionRequest(), "sessionSecr3t");
         $this->assertNotNull($response);
     }
 

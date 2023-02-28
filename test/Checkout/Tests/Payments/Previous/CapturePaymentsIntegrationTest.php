@@ -2,15 +2,15 @@
 
 namespace Checkout\Tests\Payments\Previous;
 
-use Checkout\CheckoutApiException;
-use Checkout\Payments\Previous\CaptureRequest;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\Payments\Previous\CaptureRequest;
 
 class CapturePaymentsIntegrationTest extends AbstractPaymentsIntegrationTest
 {
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldFullCaptureCardPayment()
     {

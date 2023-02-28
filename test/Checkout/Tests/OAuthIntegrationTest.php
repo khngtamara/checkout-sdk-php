@@ -2,15 +2,15 @@
 
 namespace Checkout\Tests;
 
-use Checkout\CheckoutApiException;
-use Checkout\CheckoutSdk;
-use Checkout\Common\Currency;
-use Checkout\Common\MarketplaceData;
-use Checkout\Environment;
-use Checkout\Payments\Request\PaymentRequest;
-use Checkout\Payments\Request\Source\RequestCardSource;
-use Checkout\Payments\Sender\PaymentIndividualSender;
-use Checkout\PlatformType;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\CheckoutSdk;
+use Checkout\Tamara\Common\Currency;
+use Checkout\Tamara\Common\MarketplaceData;
+use Checkout\Tamara\Environment;
+use Checkout\Tamara\Payments\Request\PaymentRequest;
+use Checkout\Tamara\Payments\Request\Source\RequestCardSource;
+use Checkout\Tamara\Payments\Sender\PaymentIndividualSender;
+use Checkout\Tamara\PlatformType;
 use Exception;
 
 class OAuthIntegrationTest extends SandboxTestFixture
@@ -27,7 +27,7 @@ class OAuthIntegrationTest extends SandboxTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldMakePaymentWithOAuth()
     {

@@ -2,12 +2,12 @@
 
 namespace Checkout\Tests\Reports;
 
-use Checkout\CheckoutApiException;
-use Checkout\CheckoutArgumentException;
-use Checkout\CheckoutAuthorizationException;
-use Checkout\CheckoutException;
-use Checkout\PlatformType;
-use Checkout\Reports\ReportsQuery;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\CheckoutArgumentException;
+use Checkout\Tamara\CheckoutAuthorizationException;
+use Checkout\Tamara\CheckoutException;
+use Checkout\Tamara\PlatformType;
+use Checkout\Tamara\Reports\ReportsQuery;
 use Checkout\Tests\SandboxTestFixture;
 use DateInterval;
 use DateTime;
@@ -17,8 +17,8 @@ class ReportsIntegrationTest extends SandboxTestFixture
 {
     /**
      * @before
-     * @throws CheckoutAuthorizationException
-     * @throws CheckoutArgumentException
+     * @throws \Checkout\Tamara\CheckoutAuthorizationException
+     * @throws \Checkout\Tamara\CheckoutArgumentException
      * @throws CheckoutException
      */
     public function before()
@@ -61,7 +61,7 @@ class ReportsIntegrationTest extends SandboxTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldGetReportsDetails()
     {

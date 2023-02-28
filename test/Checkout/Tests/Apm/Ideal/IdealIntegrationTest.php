@@ -2,11 +2,11 @@
 
 namespace Checkout\Tests\Apm\Ideal;
 
-use Checkout\CheckoutApiException;
-use Checkout\CheckoutArgumentException;
-use Checkout\CheckoutAuthorizationException;
-use Checkout\CheckoutException;
-use Checkout\PlatformType;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\CheckoutArgumentException;
+use Checkout\Tamara\CheckoutAuthorizationException;
+use Checkout\Tamara\CheckoutException;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\SandboxTestFixture;
 
 class IdealIntegrationTest extends SandboxTestFixture
@@ -14,9 +14,9 @@ class IdealIntegrationTest extends SandboxTestFixture
 
     /**
      * @before
-     * @throws CheckoutAuthorizationException
-     * @throws CheckoutArgumentException
-     * @throws CheckoutException
+     * @throws \Checkout\Tamara\CheckoutAuthorizationException
+     * @throws \Checkout\Tamara\CheckoutArgumentException
+     * @throws \Checkout\Tamara\CheckoutException
      */
     public function before()
     {
@@ -25,7 +25,7 @@ class IdealIntegrationTest extends SandboxTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldGetInfo()
     {
@@ -42,7 +42,7 @@ class IdealIntegrationTest extends SandboxTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldGetIssuers()
     {

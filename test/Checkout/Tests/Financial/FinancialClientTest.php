@@ -2,33 +2,33 @@
 
 namespace Checkout\Tests\Financial;
 
-use Checkout\CheckoutApiException;
-use Checkout\CheckoutArgumentException;
-use Checkout\CheckoutAuthorizationException;
-use Checkout\CheckoutException;
-use Checkout\Financial\FinancialActionsQuery;
-use Checkout\Financial\FinancialClient;
-use Checkout\PlatformType;
-use Checkout\Reports\ReportsQuery;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\CheckoutArgumentException;
+use Checkout\Tamara\CheckoutAuthorizationException;
+use Checkout\Tamara\CheckoutException;
+use Checkout\Tamara\Financial\FinancialActionsQuery;
+use Checkout\Tamara\Financial\FinancialClient;
+use Checkout\Tamara\PlatformType;
+use Checkout\Tamara\Reports\ReportsQuery;
 use Checkout\Tests\UnitTestFixture;
 
 class FinancialClientTest extends UnitTestFixture
 {
     /**
-     * @var FinancialClient
+     * @var \Checkout\Tamara\Financial\FinancialClient
      */
     private $client;
 
     /**
      * @before
      * @throws CheckoutAuthorizationException
-     * @throws CheckoutArgumentException
+     * @throws \Checkout\Tamara\CheckoutArgumentException
      * @throws CheckoutException
      */
     public function init()
     {
         $this->initMocks(PlatformType::$default);
-        $this->client = new FinancialClient($this->apiClient, $this->configuration);
+        $this->client = new \Checkout\Tamara\Financial\FinancialClient($this->apiClient, $this->configuration);
     }
 
     /**
@@ -41,7 +41,7 @@ class FinancialClientTest extends UnitTestFixture
             ->method("query")
             ->willReturn("foo");
 
-        $response = $this->client->query(new FinancialActionsQuery());
+        $response = $this->client->query(new \Checkout\Tamara\Financial\FinancialActionsQuery());
         $this->assertNotNull($response);
     }
 }

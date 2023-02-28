@@ -2,20 +2,20 @@
 
 namespace Checkout\Tests\Payments\Previous;
 
-use Checkout\CheckoutApiException;
-use Checkout\CheckoutArgumentException;
-use Checkout\CheckoutAuthorizationException;
-use Checkout\CheckoutException;
-use Checkout\Common\Currency;
-use Checkout\Common\CustomerRequest;
-use Checkout\Payments\Previous\PaymentRequest;
-use Checkout\Payments\Previous\Source\RequestCardSource;
-use Checkout\Payments\Previous\Source\RequestTokenSource;
-use Checkout\Payments\ThreeDsRequest;
-use Checkout\PlatformType;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\CheckoutArgumentException;
+use Checkout\Tamara\CheckoutAuthorizationException;
+use Checkout\Tamara\CheckoutException;
+use Checkout\Tamara\Common\Currency;
+use Checkout\Tamara\Common\CustomerRequest;
+use Checkout\Tamara\Payments\Previous\PaymentRequest;
+use Checkout\Tamara\Payments\Previous\Source\RequestCardSource;
+use Checkout\Tamara\Payments\Previous\Source\RequestTokenSource;
+use Checkout\Tamara\Payments\ThreeDsRequest;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\SandboxTestFixture;
 use Checkout\Tests\TestCardSource;
-use Checkout\Tokens\CardTokenRequest;
+use Checkout\Tamara\Tokens\CardTokenRequest;
 use DateTime;
 
 abstract class AbstractPaymentsIntegrationTest extends SandboxTestFixture
@@ -24,7 +24,7 @@ abstract class AbstractPaymentsIntegrationTest extends SandboxTestFixture
     /**
      * @before
      * @throws CheckoutAuthorizationException
-     * @throws CheckoutArgumentException
+     * @throws \Checkout\Tamara\CheckoutArgumentException
      * @throws CheckoutException
      */
     public function before()
@@ -37,7 +37,7 @@ abstract class AbstractPaymentsIntegrationTest extends SandboxTestFixture
      * @param int $amount
      * @param DateTime|null $captureOn
      * @return array
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     protected function makeCardPayment($shouldCapture = false, $amount = 10, $captureOn = null)
     {
@@ -53,7 +53,7 @@ abstract class AbstractPaymentsIntegrationTest extends SandboxTestFixture
         $requestCardSource->billing_address = $billingAddress;
         $requestCardSource->phone = $phone;
 
-        $paymentRequest = new PaymentRequest();
+        $paymentRequest = new \Checkout\Tamara\Payments\Previous\PaymentRequest();
         $paymentRequest->source = $requestCardSource;
         $paymentRequest->capture = $shouldCapture;
         $paymentRequest->reference = uniqid("makeCardPayment");
@@ -71,7 +71,7 @@ abstract class AbstractPaymentsIntegrationTest extends SandboxTestFixture
 
     /**
      * @return array
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     protected function makeTokenPayment()
     {
@@ -96,7 +96,7 @@ abstract class AbstractPaymentsIntegrationTest extends SandboxTestFixture
         $customerRequest = new CustomerRequest();
         $customerRequest->email = $this->randomEmail();
 
-        $paymentRequest = new PaymentRequest();
+        $paymentRequest = new \Checkout\Tamara\Payments\Previous\PaymentRequest();
         $paymentRequest->source = $requestTokenSource;
         $paymentRequest->capture = true;
         $paymentRequest->reference = uniqid("makeTokenPayment");
@@ -113,7 +113,7 @@ abstract class AbstractPaymentsIntegrationTest extends SandboxTestFixture
     /**
      * @param bool $attemptN3d
      * @return array
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     protected function make3dsCardPayment($attemptN3d = false)
     {
@@ -140,7 +140,7 @@ abstract class AbstractPaymentsIntegrationTest extends SandboxTestFixture
         $customerRequest = new CustomerRequest();
         $customerRequest->email = $this->randomEmail();
 
-        $paymentRequest = new PaymentRequest();
+        $paymentRequest = new \Checkout\Tamara\Payments\Previous\PaymentRequest();
         $paymentRequest->source = $requestCardSource;
         $paymentRequest->capture = false;
         $paymentRequest->reference = uniqid("make3dsCardPayment");

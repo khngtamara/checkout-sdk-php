@@ -2,13 +2,13 @@
 
 namespace Checkout\Tests\Customers\Previous;
 
-use Checkout\CheckoutApiException;
-use Checkout\CheckoutArgumentException;
-use Checkout\CheckoutAuthorizationException;
-use Checkout\CheckoutException;
-use Checkout\Common\Phone;
-use Checkout\Customers\CustomerRequest;
-use Checkout\PlatformType;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\CheckoutArgumentException;
+use Checkout\Tamara\CheckoutAuthorizationException;
+use Checkout\Tamara\CheckoutException;
+use Checkout\Tamara\Common\Phone;
+use Checkout\Tamara\Customers\CustomerRequest;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\SandboxTestFixture;
 
 class CustomersIntegrationTest extends SandboxTestFixture
@@ -27,7 +27,7 @@ class CustomersIntegrationTest extends SandboxTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldCreateAndGetCustomer()
     {
@@ -52,7 +52,7 @@ class CustomersIntegrationTest extends SandboxTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldCreateAndUpdateCustomer()
     {
@@ -88,7 +88,7 @@ class CustomersIntegrationTest extends SandboxTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldCreateAndDeleteCustomer()
     {

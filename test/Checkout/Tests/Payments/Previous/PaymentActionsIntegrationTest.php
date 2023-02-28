@@ -2,7 +2,7 @@
 
 namespace Checkout\Tests\Payments\Previous;
 
-use Checkout\CheckoutApiException;
+use Checkout\Tamara\CheckoutApiException;
 use Closure;
 
 class PaymentActionsIntegrationTest extends AbstractPaymentsIntegrationTest
@@ -10,7 +10,7 @@ class PaymentActionsIntegrationTest extends AbstractPaymentsIntegrationTest
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldGetPaymentActions()
     {

@@ -2,16 +2,16 @@
 
 namespace Checkout\Tests\Sources\Previous;
 
-use Checkout\CheckoutApiException;
-use Checkout\PlatformType;
-use Checkout\Sources\Previous\SepaSourceRequest;
-use Checkout\Sources\Previous\SourcesClient;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\PlatformType;
+use Checkout\Tamara\Sources\Previous\SepaSourceRequest;
+use Checkout\Tamara\Sources\Previous\SourcesClient;
 use Checkout\Tests\UnitTestFixture;
 
 class SourcesClientTest extends UnitTestFixture
 {
     /**
-     * @var SourcesClient
+     * @var \Checkout\Tamara\Sources\Previous\SourcesClient
      */
     private $client;
 
@@ -21,7 +21,7 @@ class SourcesClientTest extends UnitTestFixture
     public function init()
     {
         $this->initMocks(PlatformType::$previous);
-        $this->client = new SourcesClient($this->apiClient, $this->configuration);
+        $this->client = new \Checkout\Tamara\Sources\Previous\SourcesClient($this->apiClient, $this->configuration);
     }
 
     /**
@@ -35,7 +35,7 @@ class SourcesClientTest extends UnitTestFixture
             ->method("post")
             ->willReturn("foo");
 
-        $response = $this->client->createSepaSource(new SepaSourceRequest());
+        $response = $this->client->createSepaSource(new \Checkout\Tamara\Sources\Previous\SepaSourceRequest());
         $this->assertNotNull($response);
     }
 

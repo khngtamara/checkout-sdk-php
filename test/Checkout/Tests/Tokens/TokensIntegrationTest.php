@@ -2,13 +2,13 @@
 
 namespace Checkout\Tests\Tokens;
 
-use Checkout\CheckoutApiException;
-use Checkout\CheckoutArgumentException;
-use Checkout\CheckoutAuthorizationException;
-use Checkout\CheckoutException;
-use Checkout\PlatformType;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\CheckoutArgumentException;
+use Checkout\Tamara\CheckoutAuthorizationException;
+use Checkout\Tamara\CheckoutException;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\SandboxTestFixture;
-use Checkout\Tokens\CardTokenRequest;
+use Checkout\Tamara\Tokens\CardTokenRequest;
 
 class TokensIntegrationTest extends SandboxTestFixture
 {
@@ -17,7 +17,7 @@ class TokensIntegrationTest extends SandboxTestFixture
      * @before
      * @throws CheckoutAuthorizationException
      * @throws CheckoutArgumentException
-     * @throws CheckoutException
+     * @throws \Checkout\Tamara\CheckoutException
      */
     public function before()
     {
@@ -26,11 +26,11 @@ class TokensIntegrationTest extends SandboxTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldCreateCardToken()
     {
-        $cardTokenRequest = new CardTokenRequest();
+        $cardTokenRequest = new \Checkout\Tamara\Tokens\CardTokenRequest();
         $cardTokenRequest->name = "Mr. Test";
         $cardTokenRequest->number = "4242424242424242";
         $cardTokenRequest->expiry_year = 2025;

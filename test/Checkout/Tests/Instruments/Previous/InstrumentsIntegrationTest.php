@@ -2,21 +2,21 @@
 
 namespace Checkout\Tests\Instruments\Previous;
 
-use Checkout\CheckoutApiException;
-use Checkout\CheckoutArgumentException;
-use Checkout\CheckoutAuthorizationException;
-use Checkout\CheckoutException;
-use Checkout\Common\Address;
-use Checkout\Common\Country;
-use Checkout\Common\InstrumentType;
-use Checkout\Common\Phone;
-use Checkout\Instruments\Previous\CreateInstrumentRequest;
-use Checkout\Instruments\Previous\InstrumentAccountHolder;
-use Checkout\Instruments\Previous\InstrumentCustomerRequest;
-use Checkout\Instruments\Previous\UpdateInstrumentRequest;
-use Checkout\PlatformType;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\CheckoutArgumentException;
+use Checkout\Tamara\CheckoutAuthorizationException;
+use Checkout\Tamara\CheckoutException;
+use Checkout\Tamara\Common\Address;
+use Checkout\Tamara\Common\Country;
+use Checkout\Tamara\Common\InstrumentType;
+use Checkout\Tamara\Common\Phone;
+use Checkout\Tamara\Instruments\Previous\CreateInstrumentRequest;
+use Checkout\Tamara\Instruments\Previous\InstrumentAccountHolder;
+use Checkout\Tamara\Instruments\Previous\InstrumentCustomerRequest;
+use Checkout\Tamara\Instruments\Previous\UpdateInstrumentRequest;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\SandboxTestFixture;
-use Checkout\Tokens\CardTokenRequest;
+use Checkout\Tamara\Tokens\CardTokenRequest;
 
 class InstrumentsIntegrationTest extends SandboxTestFixture
 {
@@ -34,7 +34,7 @@ class InstrumentsIntegrationTest extends SandboxTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldCreateAndGetInstrument()
     {
@@ -86,7 +86,7 @@ class InstrumentsIntegrationTest extends SandboxTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldUpdateAndDeleteInstrument()
     {
@@ -120,7 +120,7 @@ class InstrumentsIntegrationTest extends SandboxTestFixture
 
     /**
      * @return array
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     private function createInstrument()
     {
@@ -136,11 +136,11 @@ class InstrumentsIntegrationTest extends SandboxTestFixture
         $phone->country_code = "1";
         $phone->number = "999555222";
 
-        $instrumentAccountHolder = new InstrumentAccountHolder();
+        $instrumentAccountHolder = new \Checkout\Tamara\Instruments\Previous\InstrumentAccountHolder();
         $instrumentAccountHolder->billing_address = $address;
         $instrumentAccountHolder->phone = $phone;
 
-        $customer = new InstrumentCustomerRequest();
+        $customer = new \Checkout\Tamara\Instruments\Previous\InstrumentCustomerRequest();
         $customer->email = "instrumentcustomer@checkout.com";
         $customer->name = "Instrument Customer";
         $customer->phone = $phone;
@@ -148,7 +148,7 @@ class InstrumentsIntegrationTest extends SandboxTestFixture
 
         $token = $this->createToken()["token"];
 
-        $createInstrumentRequest = new CreateInstrumentRequest();
+        $createInstrumentRequest = new \Checkout\Tamara\Instruments\Previous\CreateInstrumentRequest();
         $createInstrumentRequest->type = InstrumentType::$token;
         $createInstrumentRequest->token = $token;
         $createInstrumentRequest->account_holder = $instrumentAccountHolder;

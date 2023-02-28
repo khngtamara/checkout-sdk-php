@@ -2,10 +2,10 @@
 
 namespace Checkout\Tests\Forex;
 
-use Checkout\CheckoutApiException;
-use Checkout\Forex\ForexClient;
-use Checkout\Forex\QuoteRequest;
-use Checkout\PlatformType;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\Forex\ForexClient;
+use Checkout\Tamara\Forex\QuoteRequest;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\UnitTestFixture;
 
 class ForexClientTest extends UnitTestFixture

@@ -2,8 +2,8 @@
 
 namespace Checkout\Tests\Payments\Previous;
 
-use Checkout\Common\PaymentSourceType;
-use Checkout\Payments\Previous\Source\AbstractRequestSource;
+use Checkout\Tamara\Common\PaymentSourceType;
+use Checkout\Tamara\Payments\Previous\Source\AbstractRequestSource;
 
 class CustomSource extends AbstractRequestSource
 {

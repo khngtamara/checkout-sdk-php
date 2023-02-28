@@ -2,20 +2,20 @@
 
 namespace Checkout\Tests;
 
-use Checkout\CheckoutApi;
-use Checkout\CheckoutApiException;
-use Checkout\CheckoutArgumentException;
-use Checkout\CheckoutAuthorizationException;
-use Checkout\CheckoutException;
-use Checkout\CheckoutSdk;
-use Checkout\Common\AccountHolder;
-use Checkout\Common\Address;
-use Checkout\Common\Country;
-use Checkout\Common\Phone;
-use Checkout\Environment;
-use Checkout\OAuthScope;
-use Checkout\Payments\Payer;
-use Checkout\PlatformType;
+use Checkout\Tamara\CheckoutApi;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\CheckoutArgumentException;
+use Checkout\Tamara\CheckoutAuthorizationException;
+use Checkout\Tamara\CheckoutException;
+use Checkout\Tamara\CheckoutSdk;
+use Checkout\Tamara\Common\AccountHolder;
+use Checkout\Tamara\Common\Address;
+use Checkout\Tamara\Common\Country;
+use Checkout\Tamara\Common\Phone;
+use Checkout\Tamara\Environment;
+use Checkout\Tamara\OAuthScope;
+use Checkout\Tamara\Payments\Payer;
+use Checkout\Tamara\PlatformType;
 use Exception;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
@@ -26,7 +26,7 @@ abstract class SandboxTestFixture extends TestCase
 {
 
     /**
-     * @var \Checkout\Previous\CheckoutApi
+     * @var \Checkout\Tamara\Previous\CheckoutApi
      */
     protected $previousApi;
     /**
@@ -43,7 +43,7 @@ abstract class SandboxTestFixture extends TestCase
     /**
      * @throws CheckoutAuthorizationException
      * @throws CheckoutArgumentException
-     * @throws CheckoutException
+     * @throws \Checkout\Tamara\CheckoutException
      */
     protected function init($platformType)
     {
@@ -133,7 +133,7 @@ abstract class SandboxTestFixture extends TestCase
     }
 
     /**
-     * @return Address
+     * @return \Checkout\Tamara\Common\Address
      */
     protected function getAddress()
     {
@@ -159,7 +159,7 @@ abstract class SandboxTestFixture extends TestCase
     }
 
     /**
-     * @return AccountHolder
+     * @return \Checkout\Tamara\Common\AccountHolder
      */
     protected function getAccountHolder()
     {
@@ -218,7 +218,7 @@ abstract class SandboxTestFixture extends TestCase
     }
 
     /**
-     * @return Payer
+     * @return \Checkout\Tamara\Payments\Payer
      */
     protected function getPayer()
     {

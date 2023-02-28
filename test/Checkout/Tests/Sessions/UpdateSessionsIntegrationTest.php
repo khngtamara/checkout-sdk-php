@@ -2,10 +2,10 @@
 
 namespace Checkout\Tests\Sessions;
 
-use Checkout\CheckoutApiException;
-use Checkout\CheckoutAuthorizationException;
-use Checkout\Sessions\Channel\ThreeDsMethodCompletion;
-use Checkout\Sessions\ThreeDsMethodCompletionRequest;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\CheckoutAuthorizationException;
+use Checkout\Tamara\Sessions\Channel\ThreeDsMethodCompletion;
+use Checkout\Tamara\Sessions\ThreeDsMethodCompletionRequest;
 
 class UpdateSessionsIntegrationTest extends AbstractSessionsIntegrationTest
 {
@@ -13,7 +13,7 @@ class UpdateSessionsIntegrationTest extends AbstractSessionsIntegrationTest
     /**
      * @test
      * @throws CheckoutApiException
-     * @throws CheckoutAuthorizationException
+     * @throws \Checkout\Tamara\CheckoutAuthorizationException
      */
     public function shouldUpdateCardSessionUsingIdBrowserSession()
     {
@@ -81,7 +81,7 @@ class UpdateSessionsIntegrationTest extends AbstractSessionsIntegrationTest
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      * @throws CheckoutAuthorizationException
      */
     public function shouldUpdate3dsMethodCompletionIndicatorSessionId()

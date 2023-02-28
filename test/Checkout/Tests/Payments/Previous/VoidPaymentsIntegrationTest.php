@@ -2,8 +2,8 @@
 
 namespace Checkout\Tests\Payments\Previous;
 
-use Checkout\CheckoutApiException;
-use Checkout\Payments\VoidRequest;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\Payments\VoidRequest;
 
 class VoidPaymentsIntegrationTest extends AbstractPaymentsIntegrationTest
 {
@@ -34,7 +34,7 @@ class VoidPaymentsIntegrationTest extends AbstractPaymentsIntegrationTest
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldVoidCardPaymentIdempotent()
     {

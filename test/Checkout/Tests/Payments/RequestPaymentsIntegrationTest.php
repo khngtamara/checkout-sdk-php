@@ -2,14 +2,14 @@
 
 namespace Checkout\Tests\Payments;
 
-use Checkout\CheckoutApiException;
-use Checkout\Common\Country;
-use Checkout\Common\Currency;
-use Checkout\Common\AccountHolder;
-use Checkout\Payments\Request\PaymentRequest;
-use Checkout\Payments\Request\Source\RequestBankAccountSource;
-use Checkout\Payments\Request\Source\RequestCardSource;
-use Checkout\Payments\Request\Source\RequestCustomerSource;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\Common\Country;
+use Checkout\Tamara\Common\Currency;
+use Checkout\Tamara\Common\AccountHolder;
+use Checkout\Tamara\Payments\Request\PaymentRequest;
+use Checkout\Tamara\Payments\Request\Source\RequestBankAccountSource;
+use Checkout\Tamara\Payments\Request\Source\RequestCardSource;
+use Checkout\Tamara\Payments\Request\Source\RequestCustomerSource;
 use Checkout\Tests\TestCardSource;
 
 class RequestPaymentsIntegrationTest extends AbstractPaymentsIntegrationTest
@@ -64,7 +64,7 @@ class RequestPaymentsIntegrationTest extends AbstractPaymentsIntegrationTest
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldMakeCard3dsPayment()
     {

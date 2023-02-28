@@ -2,16 +2,16 @@
 
 namespace Checkout\Tests\Payments\Links;
 
-use Checkout\CheckoutApiException;
-use Checkout\Payments\Links\PaymentLinkRequest;
-use Checkout\Payments\Links\PaymentLinksClient;
-use Checkout\PlatformType;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\Payments\Links\PaymentLinkRequest;
+use Checkout\Tamara\Payments\Links\PaymentLinksClient;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\UnitTestFixture;
 
 class PaymentLinksClientTest extends UnitTestFixture
 {
     /**
-     * @var PaymentLinksClient
+     * @var \Checkout\Tamara\Payments\Links\PaymentLinksClient
      */
     private $client;
 
@@ -21,7 +21,7 @@ class PaymentLinksClientTest extends UnitTestFixture
     public function init()
     {
         $this->initMocks(PlatformType::$previous);
-        $this->client = new PaymentLinksClient($this->apiClient, $this->configuration);
+        $this->client = new \Checkout\Tamara\Payments\Links\PaymentLinksClient($this->apiClient, $this->configuration);
     }
 
     /**
@@ -51,7 +51,7 @@ class PaymentLinksClientTest extends UnitTestFixture
             ->method("post")
             ->willReturn("response");
 
-        $response = $this->client->createPaymentLink(new PaymentLinkRequest());
+        $response = $this->client->createPaymentLink(new \Checkout\Tamara\Payments\Links\PaymentLinkRequest());
         $this->assertNotNull($response);
     }
 

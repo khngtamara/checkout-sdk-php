@@ -2,11 +2,11 @@
 
 namespace Checkout\Tests\Customers;
 
-use Checkout\AuthorizationType;
-use Checkout\CheckoutApiException;
-use Checkout\Customers\CustomerRequest;
-use Checkout\Customers\CustomersClient;
-use Checkout\PlatformType;
+use Checkout\Tamara\AuthorizationType;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\Customers\CustomerRequest;
+use Checkout\Tamara\Customers\CustomersClient;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\UnitTestFixture;
 
 class CustomersClientTest extends UnitTestFixture
@@ -70,7 +70,7 @@ class CustomersClientTest extends UnitTestFixture
             ->method("patch")
             ->willReturn("foo");
 
-        $response = $this->client->update("customer_id", new CustomerRequest());
+        $response = $this->client->update("customer_id", new \Checkout\Tamara\Customers\CustomerRequest());
         $this->assertNotNull($response);
     }
 

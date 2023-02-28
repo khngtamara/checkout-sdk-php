@@ -2,8 +2,8 @@
 
 namespace Checkout\Tests\Sessions;
 
-use Checkout\CheckoutAuthorizationException;
-use Checkout\Sessions\SessionSecretSdkCredentials;
+use Checkout\Tamara\CheckoutAuthorizationException;
+use Checkout\Tamara\Sessions\SessionSecretSdkCredentials;
 use Checkout\Tests\UnitTestFixture;
 
 class SessionSecretSdkCredentialsTest extends UnitTestFixture
@@ -14,17 +14,17 @@ class SessionSecretSdkCredentialsTest extends UnitTestFixture
      */
     public function shouldCreateSessionSecretSdkCredentials()
     {
-        $credentials = new SessionSecretSdkCredentials("test");
+        $credentials = new \Checkout\Tamara\Sessions\SessionSecretSdkCredentials("test");
         $this->assertEquals("test", $credentials->secret);
     }
 
     /**
      * @test
-     * @throws CheckoutAuthorizationException
+     * @throws \Checkout\Tamara\CheckoutAuthorizationException
      */
     public function shouldGetAuthorization()
     {
-        $credentials = new SessionSecretSdkCredentials("test");
+        $credentials = new \Checkout\Tamara\Sessions\SessionSecretSdkCredentials("test");
         $auth = $credentials->getAuthorization("custom");
         $this->assertNotNull($auth);
         $this->assertEquals("test", $auth->getAuthorizationHeader());

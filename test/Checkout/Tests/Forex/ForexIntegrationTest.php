@@ -2,13 +2,13 @@
 
 namespace Checkout\Tests\Forex;
 
-use Checkout\CheckoutApiException;
-use Checkout\CheckoutArgumentException;
-use Checkout\CheckoutAuthorizationException;
-use Checkout\CheckoutException;
-use Checkout\Common\Currency;
-use Checkout\Forex\QuoteRequest;
-use Checkout\PlatformType;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\CheckoutArgumentException;
+use Checkout\Tamara\CheckoutAuthorizationException;
+use Checkout\Tamara\CheckoutException;
+use Checkout\Tamara\Common\Currency;
+use Checkout\Tamara\Forex\QuoteRequest;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\SandboxTestFixture;
 
 class ForexIntegrationTest extends SandboxTestFixture
@@ -18,7 +18,7 @@ class ForexIntegrationTest extends SandboxTestFixture
      * @before
      * @throws CheckoutAuthorizationException
      * @throws CheckoutArgumentException
-     * @throws CheckoutException
+     * @throws \Checkout\Tamara\CheckoutException
      */
     public function before()
     {
@@ -31,7 +31,7 @@ class ForexIntegrationTest extends SandboxTestFixture
      */
     public function shouldRequestQuote()
     {
-        $quoteRequest = new QuoteRequest();
+        $quoteRequest = new \Checkout\Tamara\Forex\QuoteRequest();
         $quoteRequest->source_currency = Currency::$GBP;
         $quoteRequest->source_amount = 30000;
         $quoteRequest->destination_currency = Currency::$USD;

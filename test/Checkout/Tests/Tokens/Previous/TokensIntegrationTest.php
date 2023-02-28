@@ -2,13 +2,13 @@
 
 namespace Checkout\Tests\Tokens\Previous;
 
-use Checkout\CheckoutApiException;
-use Checkout\CheckoutArgumentException;
-use Checkout\CheckoutAuthorizationException;
-use Checkout\CheckoutException;
-use Checkout\PlatformType;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\CheckoutArgumentException;
+use Checkout\Tamara\CheckoutAuthorizationException;
+use Checkout\Tamara\CheckoutException;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\SandboxTestFixture;
-use Checkout\Tokens\CardTokenRequest;
+use Checkout\Tamara\Tokens\CardTokenRequest;
 
 class TokensIntegrationTest extends SandboxTestFixture
 {
@@ -16,7 +16,7 @@ class TokensIntegrationTest extends SandboxTestFixture
     /**
      * @before
      * @throws CheckoutAuthorizationException
-     * @throws CheckoutArgumentException
+     * @throws \Checkout\Tamara\CheckoutArgumentException
      * @throws CheckoutException
      */
     public function before()

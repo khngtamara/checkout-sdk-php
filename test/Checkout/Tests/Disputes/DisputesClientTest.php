@@ -2,19 +2,19 @@
 
 namespace Checkout\Tests\Disputes;
 
-use Checkout\AuthorizationType;
-use Checkout\CheckoutApiException;
-use Checkout\Disputes\DisputeEvidenceRequest;
-use Checkout\Disputes\DisputesClient;
-use Checkout\Disputes\DisputesQueryFilter;
-use Checkout\Files\FileRequest;
-use Checkout\PlatformType;
+use Checkout\Tamara\AuthorizationType;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\Disputes\DisputeEvidenceRequest;
+use Checkout\Tamara\Disputes\DisputesClient;
+use Checkout\Tamara\Disputes\DisputesQueryFilter;
+use Checkout\Tamara\Files\FileRequest;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\UnitTestFixture;
 
 class DisputesClientTest extends UnitTestFixture
 {
     /**
-     * @var DisputesClient
+     * @var \Checkout\Tamara\Disputes\DisputesClient
      */
     private $client;
 
@@ -27,12 +27,12 @@ class DisputesClientTest extends UnitTestFixture
     public function init()
     {
         $this->initMocks(PlatformType::$previous);
-        $this->client = new DisputesClient($this->apiClient, $this->configuration, AuthorizationType::$secretKey);
+        $this->client = new \Checkout\Tamara\Disputes\DisputesClient($this->apiClient, $this->configuration, AuthorizationType::$secretKey);
     }
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldQueryDispute()
     {
@@ -41,13 +41,13 @@ class DisputesClientTest extends UnitTestFixture
             ->method("query")
             ->willReturn("foo");
 
-        $response = $this->client->query(new DisputesQueryFilter());
+        $response = $this->client->query(new \Checkout\Tamara\Disputes\DisputesQueryFilter());
         $this->assertNotNull($response);
     }
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldGetDisputeDetails()
     {
@@ -62,7 +62,7 @@ class DisputesClientTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldAcceptDispute()
     {
@@ -77,7 +77,7 @@ class DisputesClientTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldPutEvidence()
     {
@@ -86,13 +86,13 @@ class DisputesClientTest extends UnitTestFixture
             ->method("put")
             ->willReturn("foo");
 
-        $response = $this->client->putEvidence("dispute_id", new DisputeEvidenceRequest());
+        $response = $this->client->putEvidence("dispute_id", new \Checkout\Tamara\Disputes\DisputeEvidenceRequest());
         $this->assertNotNull($response);
     }
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldGetEvidence()
     {
@@ -122,7 +122,7 @@ class DisputesClientTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldUploadFile()
     {
@@ -139,7 +139,7 @@ class DisputesClientTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldGetFileDetails()
     {

@@ -2,17 +2,17 @@
 
 namespace Checkout\Tests\Instruments\Previous;
 
-use Checkout\CheckoutApiException;
-use Checkout\Instruments\Previous\CreateInstrumentRequest;
-use Checkout\Instruments\Previous\InstrumentsClient;
-use Checkout\Instruments\Previous\UpdateInstrumentRequest;
-use Checkout\PlatformType;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\Instruments\Previous\CreateInstrumentRequest;
+use Checkout\Tamara\Instruments\Previous\InstrumentsClient;
+use Checkout\Tamara\Instruments\Previous\UpdateInstrumentRequest;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\UnitTestFixture;
 
 class InstrumentsClientTest extends UnitTestFixture
 {
     /**
-     * @var InstrumentsClient
+     * @var \Checkout\Tamara\Instruments\Previous\InstrumentsClient
      */
     private $client;
 
@@ -22,13 +22,13 @@ class InstrumentsClientTest extends UnitTestFixture
     public function init()
     {
         $this->initMocks(PlatformType::$previous);
-        $this->client = new InstrumentsClient($this->apiClient, $this->configuration);
+        $this->client = new \Checkout\Tamara\Instruments\Previous\InstrumentsClient($this->apiClient, $this->configuration);
     }
 
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldCreateInstrument()
     {
@@ -37,7 +37,7 @@ class InstrumentsClientTest extends UnitTestFixture
             ->method("post")
             ->willReturn("foo");
 
-        $response = $this->client->create(new CreateInstrumentRequest());
+        $response = $this->client->create(new \Checkout\Tamara\Instruments\Previous\CreateInstrumentRequest());
         $this->assertNotNull($response);
     }
 
@@ -58,7 +58,7 @@ class InstrumentsClientTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldUpdateInstrument()
     {
@@ -66,7 +66,7 @@ class InstrumentsClientTest extends UnitTestFixture
             ->willReturn("foo");
 
 
-        $response = $this->client->update("instrument_id", new UpdateInstrumentRequest());
+        $response = $this->client->update("instrument_id", new \Checkout\Tamara\Instruments\Previous\UpdateInstrumentRequest());
         $this->assertNotNull($response);
     }
 

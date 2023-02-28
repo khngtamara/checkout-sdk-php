@@ -2,10 +2,10 @@
 
 namespace Checkout\Tests\Disputes;
 
-use Checkout\CheckoutApiException;
-use Checkout\Disputes\DisputeEvidenceRequest;
-use Checkout\Disputes\DisputesQueryFilter;
-use Checkout\Files\FileRequest;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\Disputes\DisputeEvidenceRequest;
+use Checkout\Tamara\Disputes\DisputesQueryFilter;
+use Checkout\Tamara\Files\FileRequest;
 use Checkout\Tests\Payments\AbstractPaymentsIntegrationTest;
 use Closure;
 use DateInterval;
@@ -17,11 +17,11 @@ class DisputesIntegrationTest extends AbstractPaymentsIntegrationTest
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldQueryDisputes()
     {
-        $disputesQueryFilter = new DisputesQueryFilter();
+        $disputesQueryFilter = new \Checkout\Tamara\Disputes\DisputesQueryFilter();
         $disputesQueryFilter->limit = 100;
 
         $from = new DateTime();
@@ -127,7 +127,7 @@ class DisputesIntegrationTest extends AbstractPaymentsIntegrationTest
         $uploadFileResponse = $this->checkoutApi->getDisputesClient()->uploadFile($fileRequest);
         $this->assertResponse($uploadFileResponse, "id");
 
-        $disputeEvidenceRequest = new DisputeEvidenceRequest();
+        $disputeEvidenceRequest = new \Checkout\Tamara\Disputes\DisputeEvidenceRequest();
         $disputeEvidenceRequest->proof_of_delivery_or_service_file = $uploadFileResponse["id"];
         $disputeEvidenceRequest->proof_of_delivery_or_service_text = "proof of delivery or service text";
         $disputeEvidenceRequest->invoice_or_receipt_file = $uploadFileResponse["id"];

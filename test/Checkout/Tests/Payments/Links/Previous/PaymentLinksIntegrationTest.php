@@ -2,22 +2,22 @@
 
 namespace Checkout\Tests\Payments\Links\Previous;
 
-use Checkout\CheckoutApiException;
-use Checkout\CheckoutArgumentException;
-use Checkout\CheckoutAuthorizationException;
-use Checkout\CheckoutException;
-use Checkout\Common\Country;
-use Checkout\Common\Currency;
-use Checkout\Common\CustomerRequest;
-use Checkout\Common\Product;
-use Checkout\Payments\BillingInformation;
-use Checkout\Payments\Links\PaymentLinkRequest;
-use Checkout\Payments\PaymentRecipient;
-use Checkout\Payments\ProcessingSettings;
-use Checkout\Payments\RiskRequest;
-use Checkout\Payments\ShippingDetails;
-use Checkout\Payments\ThreeDsRequest;
-use Checkout\PlatformType;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\CheckoutArgumentException;
+use Checkout\Tamara\CheckoutAuthorizationException;
+use Checkout\Tamara\CheckoutException;
+use Checkout\Tamara\Common\Country;
+use Checkout\Tamara\Common\Currency;
+use Checkout\Tamara\Common\CustomerRequest;
+use Checkout\Tamara\Common\Product;
+use Checkout\Tamara\Payments\BillingInformation;
+use Checkout\Tamara\Payments\Links\PaymentLinkRequest;
+use Checkout\Tamara\Payments\PaymentRecipient;
+use Checkout\Tamara\Payments\ProcessingSettings;
+use Checkout\Tamara\Payments\RiskRequest;
+use Checkout\Tamara\Payments\ShippingDetails;
+use Checkout\Tamara\Payments\ThreeDsRequest;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\SandboxTestFixture;
 
 class PaymentLinksIntegrationTest extends SandboxTestFixture
@@ -26,7 +26,7 @@ class PaymentLinksIntegrationTest extends SandboxTestFixture
     /**
      * @before
      * @throws CheckoutAuthorizationException
-     * @throws CheckoutArgumentException
+     * @throws \Checkout\Tamara\CheckoutArgumentException
      * @throws CheckoutException
      */
     public function before()
@@ -36,7 +36,7 @@ class PaymentLinksIntegrationTest extends SandboxTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldCreateAndGetPaymentLink()
     {

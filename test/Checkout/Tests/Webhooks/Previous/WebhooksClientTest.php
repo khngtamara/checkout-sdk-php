@@ -2,11 +2,11 @@
 
 namespace Checkout\Tests\Webhooks\Previous;
 
-use Checkout\CheckoutApiException;
-use Checkout\PlatformType;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\UnitTestFixture;
-use Checkout\Webhooks\Previous\WebhookRequest;
-use Checkout\Webhooks\Previous\WebhooksClient;
+use Checkout\Tamara\Webhooks\Previous\WebhookRequest;
+use Checkout\Tamara\Webhooks\Previous\WebhooksClient;
 
 class WebhooksClientTest extends UnitTestFixture
 {
@@ -21,13 +21,13 @@ class WebhooksClientTest extends UnitTestFixture
     public function init()
     {
         $this->initMocks(PlatformType::$previous);
-        $this->client = new WebhooksClient($this->apiClient, $this->configuration);
+        $this->client = new \Checkout\Tamara\Webhooks\Previous\WebhooksClient($this->apiClient, $this->configuration);
     }
 
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldRetrieveWebhooks()
     {
@@ -77,13 +77,13 @@ class WebhooksClientTest extends UnitTestFixture
             ->method("put")
             ->willReturn("foo");
 
-        $response = $this->client->updateWebhook("webhook_id", new WebhookRequest());
+        $response = $this->client->updateWebhook("webhook_id", new \Checkout\Tamara\Webhooks\Previous\WebhookRequest());
         $this->assertNotNull($response);
     }
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldPatchWebhook()
     {

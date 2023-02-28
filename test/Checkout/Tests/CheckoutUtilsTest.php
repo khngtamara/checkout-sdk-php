@@ -2,7 +2,7 @@
 
 namespace Checkout\Tests;
 
-use Checkout\CheckoutUtils;
+use Checkout\Tamara\CheckoutUtils;
 use DateTime;
 use PHPUnit\Framework\TestCase;
 

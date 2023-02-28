@@ -2,10 +2,10 @@
 
 namespace Checkout\Tests;
 
-use Checkout\CheckoutArgumentException;
-use Checkout\CheckoutSdk;
-use Checkout\Environment;
-use Checkout\HttpClientBuilderInterface;
+use Checkout\Tamara\CheckoutArgumentException;
+use Checkout\Tamara\CheckoutSdk;
+use Checkout\Tamara\Environment;
+use Checkout\Tamara\HttpClientBuilderInterface;
 use Exception;
 
 class CheckoutDefaultSdkTest extends UnitTestFixture
@@ -13,7 +13,7 @@ class CheckoutDefaultSdkTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutArgumentException
+     * @throws \Checkout\Tamara\CheckoutArgumentException
      */
     public function shouldCreateCheckoutSdks()
     {
@@ -65,7 +65,7 @@ class CheckoutDefaultSdkTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutArgumentException
+     * @throws \Checkout\Tamara\CheckoutArgumentException
      */
     public function shouldInstantiateClientWithCustomHttpClient()
     {

@@ -2,10 +2,10 @@
 
 namespace Checkout\Tests\Events\Previous;
 
-use Checkout\CheckoutApiException;
-use Checkout\Events\Previous\EventsClient;
-use Checkout\Events\Previous\RetrieveEventsRequest;
-use Checkout\PlatformType;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\Events\Previous\EventsClient;
+use Checkout\Tamara\Events\Previous\RetrieveEventsRequest;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\UnitTestFixture;
 
 class EventsClientTest extends UnitTestFixture
@@ -51,7 +51,7 @@ class EventsClientTest extends UnitTestFixture
         $this->apiClient->method("query")
             ->willReturn("foo");
 
-        $response = $this->client->retrieveEvents(new RetrieveEventsRequest());
+        $response = $this->client->retrieveEvents(new \Checkout\Tamara\Events\Previous\RetrieveEventsRequest());
         $this->assertNotNull($response);
     }
 
@@ -71,7 +71,7 @@ class EventsClientTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldRetrieveEventNotification()
     {
@@ -85,7 +85,7 @@ class EventsClientTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldRetryWebhook()
     {

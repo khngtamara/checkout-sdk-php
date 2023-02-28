@@ -2,22 +2,22 @@
 
 namespace Checkout\Tests\Balances;
 
-use Checkout\Balances\BalancesQuery;
-use Checkout\CheckoutApiException;
-use Checkout\CheckoutArgumentException;
-use Checkout\CheckoutAuthorizationException;
-use Checkout\CheckoutException;
-use Checkout\Common\Currency;
-use Checkout\PlatformType;
+use Checkout\Tamara\Balances\BalancesQuery;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\CheckoutArgumentException;
+use Checkout\Tamara\CheckoutAuthorizationException;
+use Checkout\Tamara\CheckoutException;
+use Checkout\Tamara\Common\Currency;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\SandboxTestFixture;
 
 class BalancesIntegrationTest extends SandboxTestFixture
 {
     /**
      * @before
-     * @throws CheckoutAuthorizationException
+     * @throws \Checkout\Tamara\CheckoutAuthorizationException
      * @throws CheckoutArgumentException
-     * @throws CheckoutException
+     * @throws \Checkout\Tamara\CheckoutException
      */
     public function before()
     {

@@ -2,11 +2,11 @@
 
 namespace Checkout\Tests\Risk;
 
-use Checkout\CheckoutApiException;
-use Checkout\PlatformType;
-use Checkout\Risk\PreAuthentication\PreAuthenticationAssessmentRequest;
-use Checkout\Risk\PreCapture\PreCaptureAssessmentRequest;
-use Checkout\Risk\RiskClient;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\PlatformType;
+use Checkout\Tamara\Risk\PreAuthentication\PreAuthenticationAssessmentRequest;
+use Checkout\Tamara\Risk\PreCapture\PreCaptureAssessmentRequest;
+use Checkout\Tamara\Risk\RiskClient;
 use Checkout\Tests\UnitTestFixture;
 
 class RiskClientTest extends UnitTestFixture

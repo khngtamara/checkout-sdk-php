@@ -1,0 +1,28 @@
+<?php
+
+namespace Checkout\Tamara\Accounts;
+
+use Checkout\Tamara\Accounts\EntityFinancialDocuments;
+
+class EntityFinancialDetails
+{
+    /**
+     * @var int
+     */
+    public $annual_processing_volume;
+
+    /**
+     * @var int
+     */
+    public $average_transaction_value;
+
+    /**
+     * @var int
+     */
+    public $highest_transaction_value;
+
+    /**
+     * @var EntityFinancialDocuments
+     */
+    public $documents;
+}

@@ -2,8 +2,8 @@
 
 namespace Checkout\Tests\Payments;
 
-use Checkout\CheckoutApiException;
-use Checkout\Payments\PaymentsQueryFilter;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\Payments\PaymentsQueryFilter;
 use Closure;
 
 class GetPaymentsListIntegrationTest extends AbstractPaymentsIntegrationTest
@@ -16,7 +16,7 @@ class GetPaymentsListIntegrationTest extends AbstractPaymentsIntegrationTest
     {
         $paymentResponse = $this->makeCardPayment();
 
-        $query = new PaymentsQueryFilter();
+        $query = new \Checkout\Tamara\Payments\PaymentsQueryFilter();
         $query->limit = 100;
         $query->skip = 0;
         $query->reference = $paymentResponse["reference"];

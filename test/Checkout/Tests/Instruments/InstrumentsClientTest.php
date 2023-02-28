@@ -2,16 +2,16 @@
 
 namespace Checkout\Tests\Instruments;
 
-use Checkout\CheckoutApiException;
-use Checkout\Common\Country;
-use Checkout\Common\Currency;
-use Checkout\Common\AccountHolderType;
-use Checkout\Instruments\Create\CreateBankAccountInstrumentRequest;
-use Checkout\Instruments\Get\BankAccountFieldQuery;
-use Checkout\Instruments\Get\PaymentNetwork;
-use Checkout\Instruments\InstrumentsClient;
-use Checkout\Instruments\Update\UpdateCardInstrumentRequest;
-use Checkout\PlatformType;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\Common\Country;
+use Checkout\Tamara\Common\Currency;
+use Checkout\Tamara\Common\AccountHolderType;
+use Checkout\Tamara\Instruments\Create\CreateBankAccountInstrumentRequest;
+use Checkout\Tamara\Instruments\Get\BankAccountFieldQuery;
+use Checkout\Tamara\Instruments\Get\PaymentNetwork;
+use Checkout\Tamara\Instruments\InstrumentsClient;
+use Checkout\Tamara\Instruments\Update\UpdateCardInstrumentRequest;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\UnitTestFixture;
 
 class InstrumentsClientTest extends UnitTestFixture
@@ -33,7 +33,7 @@ class InstrumentsClientTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldCreateInstrument()
     {
@@ -63,7 +63,7 @@ class InstrumentsClientTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldUpdateInstrument()
     {
@@ -77,7 +77,7 @@ class InstrumentsClientTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldDeleteInstruments()
     {
@@ -90,7 +90,7 @@ class InstrumentsClientTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldGetBankAccountFieldFormatting()
     {

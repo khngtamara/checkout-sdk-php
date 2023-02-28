@@ -2,18 +2,18 @@
 
 namespace Checkout\Tests\Instruments;
 
-use Checkout\CheckoutApiException;
-use Checkout\CheckoutArgumentException;
-use Checkout\CheckoutAuthorizationException;
-use Checkout\CheckoutException;
-use Checkout\Common\AccountHolder;
-use Checkout\Customers\CustomerRequest;
-use Checkout\Instruments\Create\CreateCustomerInstrumentRequest;
-use Checkout\Instruments\Create\CreateTokenInstrumentRequest;
-use Checkout\Instruments\Update\UpdateCardInstrumentRequest;
-use Checkout\Instruments\Update\UpdateCustomerRequest;
-use Checkout\Instruments\Update\UpdateTokenInstrumentRequest;
-use Checkout\PlatformType;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\CheckoutArgumentException;
+use Checkout\Tamara\CheckoutAuthorizationException;
+use Checkout\Tamara\CheckoutException;
+use Checkout\Tamara\Common\AccountHolder;
+use Checkout\Tamara\Customers\CustomerRequest;
+use Checkout\Tamara\Instruments\Create\CreateCustomerInstrumentRequest;
+use Checkout\Tamara\Instruments\Create\CreateTokenInstrumentRequest;
+use Checkout\Tamara\Instruments\Update\UpdateCardInstrumentRequest;
+use Checkout\Tamara\Instruments\Update\UpdateCustomerRequest;
+use Checkout\Tamara\Instruments\Update\UpdateTokenInstrumentRequest;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\Payments\AbstractPaymentsIntegrationTest;
 
 class InstrumentsIntegrationTest extends AbstractPaymentsIntegrationTest
@@ -63,7 +63,7 @@ class InstrumentsIntegrationTest extends AbstractPaymentsIntegrationTest
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldUpdateTokenInstrument()
     {
@@ -142,7 +142,7 @@ class InstrumentsIntegrationTest extends AbstractPaymentsIntegrationTest
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldDeleteInstrument()
     {
@@ -158,7 +158,7 @@ class InstrumentsIntegrationTest extends AbstractPaymentsIntegrationTest
 
     /**
      * @return array
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     private function createTokenInstrument()
     {

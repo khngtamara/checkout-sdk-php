@@ -2,13 +2,13 @@
 
 namespace Checkout\Tests\Sources\Previous;
 
-use Checkout\CheckoutApiException;
-use Checkout\CheckoutArgumentException;
-use Checkout\CheckoutAuthorizationException;
-use Checkout\CheckoutException;
-use Checkout\PlatformType;
-use Checkout\Sources\Previous\SepaSourceRequest;
-use Checkout\Sources\Previous\SourceData;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\CheckoutArgumentException;
+use Checkout\Tamara\CheckoutAuthorizationException;
+use Checkout\Tamara\CheckoutException;
+use Checkout\Tamara\PlatformType;
+use Checkout\Tamara\Sources\Previous\SepaSourceRequest;
+use Checkout\Tamara\Sources\Previous\SourceData;
 use Checkout\Tests\SandboxTestFixture;
 
 class SourcesIntegrationTest extends SandboxTestFixture
@@ -16,9 +16,9 @@ class SourcesIntegrationTest extends SandboxTestFixture
 
     /**
      * @before
-     * @throws CheckoutAuthorizationException
+     * @throws \Checkout\Tamara\CheckoutAuthorizationException
      * @throws CheckoutArgumentException
-     * @throws CheckoutException
+     * @throws \Checkout\Tamara\CheckoutException
      */
     public function before()
     {

@@ -2,10 +2,10 @@
 
 namespace Checkout\Tests\Balances;
 
-use Checkout\Balances\BalancesClient;
-use Checkout\Balances\BalancesQuery;
-use Checkout\CheckoutApiException;
-use Checkout\PlatformType;
+use Checkout\Tamara\Balances\BalancesClient;
+use Checkout\Tamara\Balances\BalancesQuery;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\UnitTestFixture;
 
 class BalancesClientTest extends UnitTestFixture
@@ -24,7 +24,7 @@ class BalancesClientTest extends UnitTestFixture
     public function init()
     {
         $this->initMocks(PlatformType::$default_oauth);
-        $this->client = new BalancesClient($this->apiClient, $this->configuration);
+        $this->client = new \Checkout\Tamara\Balances\BalancesClient($this->apiClient, $this->configuration);
     }
 
     /**
@@ -37,7 +37,7 @@ class BalancesClientTest extends UnitTestFixture
             ->method("query")
             ->willReturn("response");
 
-        $response = $this->client->retrieveEntityBalances("entity_id", new BalancesQuery());
+        $response = $this->client->retrieveEntityBalances("entity_id", new \Checkout\Tamara\Balances\BalancesQuery());
 
         $this->assertNotNull($response);
     }

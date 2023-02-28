@@ -2,15 +2,15 @@
 
 namespace Checkout\Tests\Apm\Previous\Klarna;
 
-use Checkout\Apm\Previous\Klarna\CreditSessionRequest;
-use Checkout\Apm\Previous\Klarna\KlarnaProduct;
-use Checkout\CheckoutApiException;
-use Checkout\CheckoutArgumentException;
-use Checkout\CheckoutAuthorizationException;
-use Checkout\CheckoutException;
-use Checkout\Common\Country;
-use Checkout\Common\Currency;
-use Checkout\PlatformType;
+use Checkout\Tamara\Apm\Previous\Klarna\CreditSessionRequest;
+use Checkout\Tamara\Apm\Previous\Klarna\KlarnaProduct;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\CheckoutArgumentException;
+use Checkout\Tamara\CheckoutAuthorizationException;
+use Checkout\Tamara\CheckoutException;
+use Checkout\Tamara\Common\Country;
+use Checkout\Tamara\Common\Currency;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\SandboxTestFixture;
 
 class KlarnaIntegrationTest extends SandboxTestFixture
@@ -19,7 +19,7 @@ class KlarnaIntegrationTest extends SandboxTestFixture
     /**
      * @before
      * @throws CheckoutAuthorizationException
-     * @throws CheckoutArgumentException
+     * @throws \Checkout\Tamara\CheckoutArgumentException
      * @throws CheckoutException
      */
     public function before()
@@ -29,7 +29,7 @@ class KlarnaIntegrationTest extends SandboxTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldCreateAndGetKlarnaSession()
     {
@@ -41,7 +41,7 @@ class KlarnaIntegrationTest extends SandboxTestFixture
         $klarnaProduct->total_amount = 1000;
         $klarnaProduct->total_tax_amount = 0;
 
-        $creditSessionRequest = new CreditSessionRequest();
+        $creditSessionRequest = new \Checkout\Tamara\Apm\Previous\Klarna\CreditSessionRequest();
         $creditSessionRequest->purchase_country = Country::$GB;
         $creditSessionRequest->currency = Currency::$GBP;
         $creditSessionRequest->locale = "en-GB";

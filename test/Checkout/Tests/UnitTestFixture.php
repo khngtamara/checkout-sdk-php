@@ -2,12 +2,12 @@
 
 namespace Checkout\Tests;
 
-use Checkout\ApiClient;
-use Checkout\CheckoutConfiguration;
-use Checkout\Environment;
-use Checkout\HttpClientBuilderInterface;
-use Checkout\SdkAuthorization;
-use Checkout\SdkCredentialsInterface;
+use Checkout\Tamara\ApiClient;
+use Checkout\Tamara\CheckoutConfiguration;
+use Checkout\Tamara\Environment;
+use Checkout\Tamara\HttpClientBuilderInterface;
+use Checkout\Tamara\SdkAuthorization;
+use Checkout\Tamara\SdkCredentialsInterface;
 use Mockery\Adapter\Phpunit\MockeryTestCase;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;

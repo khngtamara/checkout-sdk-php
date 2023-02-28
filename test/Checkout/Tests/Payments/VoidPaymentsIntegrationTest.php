@@ -2,21 +2,21 @@
 
 namespace Checkout\Tests\Payments;
 
-use Checkout\CheckoutApiException;
-use Checkout\Payments\VoidRequest;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\Payments\VoidRequest;
 
 class VoidPaymentsIntegrationTest extends AbstractPaymentsIntegrationTest
 {
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldVoidCardPayment()
     {
         $paymentResponse = $this->makeCardPayment();
 
-        $voidRequest = new VoidRequest();
+        $voidRequest = new \Checkout\Tamara\Payments\VoidRequest();
         $voidRequest->reference = uniqid("shouldVoidCardPayment");
 
         $response = $this->retriable(
@@ -34,7 +34,7 @@ class VoidPaymentsIntegrationTest extends AbstractPaymentsIntegrationTest
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldVoidCardPaymentIdempotent()
     {

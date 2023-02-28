@@ -2,8 +2,8 @@
 
 namespace Checkout\Tests\Payments\Previous;
 
-use Checkout\CheckoutApiException;
-use Checkout\Payments\PaymentsQueryFilter;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\Payments\PaymentsQueryFilter;
 use Closure;
 
 class GetPaymentsListIntegrationTest extends AbstractPaymentsIntegrationTest

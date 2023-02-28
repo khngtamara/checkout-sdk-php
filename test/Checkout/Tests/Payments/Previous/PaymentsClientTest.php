@@ -2,22 +2,22 @@
 
 namespace Checkout\Tests\Payments\Previous;
 
-use Checkout\CheckoutApiException;
-use Checkout\Common\Currency;
-use Checkout\Payments\PaymentsQueryFilter;
-use Checkout\Payments\Previous\CaptureRequest;
-use Checkout\Payments\Previous\PaymentRequest;
-use Checkout\Payments\Previous\PaymentsClient;
-use Checkout\Payments\Previous\PayoutRequest;
-use Checkout\Payments\RefundRequest;
-use Checkout\Payments\VoidRequest;
-use Checkout\PlatformType;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\Common\Currency;
+use Checkout\Tamara\Payments\PaymentsQueryFilter;
+use Checkout\Tamara\Payments\Previous\CaptureRequest;
+use Checkout\Tamara\Payments\Previous\PaymentRequest;
+use Checkout\Tamara\Payments\Previous\PaymentsClient;
+use Checkout\Tamara\Payments\Previous\PayoutRequest;
+use Checkout\Tamara\Payments\RefundRequest;
+use Checkout\Tamara\Payments\VoidRequest;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\UnitTestFixture;
 
 class PaymentsClientTest extends UnitTestFixture
 {
     /**
-     * @var PaymentsClient
+     * @var \Checkout\Tamara\Payments\Previous\PaymentsClient
      */
     private $client;
 
@@ -82,7 +82,7 @@ class PaymentsClientTest extends UnitTestFixture
             ->method("post")
             ->willReturn("foo");
 
-        $response = $this->client->requestPayout(new PayoutRequest());
+        $response = $this->client->requestPayout(new \Checkout\Tamara\Payments\Previous\PayoutRequest());
         $this->assertNotNull($response);
     }
 
@@ -141,7 +141,7 @@ class PaymentsClientTest extends UnitTestFixture
             ->method("post")
             ->willReturn("foo");
 
-        $response = $this->client->capturePayment("payment_id", new CaptureRequest());
+        $response = $this->client->capturePayment("payment_id", new \Checkout\Tamara\Payments\Previous\CaptureRequest());
         $this->assertNotNull($response);
     }
 
@@ -162,7 +162,7 @@ class PaymentsClientTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldVoidPayment()
     {

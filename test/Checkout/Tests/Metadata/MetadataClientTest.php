@@ -2,10 +2,10 @@
 
 namespace Checkout\Tests\Metadata;
 
-use Checkout\CheckoutApiException;
-use Checkout\Metadata\Card\CardMetadataRequest;
-use Checkout\Metadata\MetadataClient;
-use Checkout\PlatformType;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\Metadata\Card\CardMetadataRequest;
+use Checkout\Tamara\Metadata\MetadataClient;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\UnitTestFixture;
 
 class MetadataClientTest extends UnitTestFixture
@@ -26,7 +26,7 @@ class MetadataClientTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldRequestCardMetadata()
     {

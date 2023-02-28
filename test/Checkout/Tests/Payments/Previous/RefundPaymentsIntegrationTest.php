@@ -2,8 +2,8 @@
 
 namespace Checkout\Tests\Payments\Previous;
 
-use Checkout\CheckoutApiException;
-use Checkout\Payments\RefundRequest;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\Payments\RefundRequest;
 
 class RefundPaymentsIntegrationTest extends AbstractPaymentsIntegrationTest
 {

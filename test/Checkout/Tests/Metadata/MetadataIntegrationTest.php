@@ -2,19 +2,19 @@
 
 namespace Checkout\Tests\Metadata;
 
-use Checkout\CheckoutArgumentException;
-use Checkout\CheckoutAuthorizationException;
-use Checkout\CheckoutException;
-use Checkout\CheckoutSdk;
-use Checkout\Metadata\Card\CardMetadataFormatType;
-use Checkout\Metadata\Card\CardMetadataRequest;
-use Checkout\Metadata\Card\Source\CardMetadataBinSource;
-use Checkout\Metadata\Card\Source\CardMetadataCardSource;
-use Checkout\Metadata\Card\Source\CardMetadataTokenSource;
-use Checkout\PlatformType;
+use Checkout\Tamara\CheckoutArgumentException;
+use Checkout\Tamara\CheckoutAuthorizationException;
+use Checkout\Tamara\CheckoutException;
+use Checkout\Tamara\CheckoutSdk;
+use Checkout\Tamara\Metadata\Card\CardMetadataFormatType;
+use Checkout\Tamara\Metadata\Card\CardMetadataRequest;
+use Checkout\Tamara\Metadata\Card\Source\CardMetadataBinSource;
+use Checkout\Tamara\Metadata\Card\Source\CardMetadataCardSource;
+use Checkout\Tamara\Metadata\Card\Source\CardMetadataTokenSource;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\SandboxTestFixture;
 use Checkout\Tests\TestCardSource;
-use Checkout\Tokens\CardTokenRequest;
+use Checkout\Tamara\Tokens\CardTokenRequest;
 
 class MetadataIntegrationTest extends SandboxTestFixture
 {
@@ -22,7 +22,7 @@ class MetadataIntegrationTest extends SandboxTestFixture
     /**
      * @before
      * @throws CheckoutAuthorizationException
-     * @throws CheckoutArgumentException
+     * @throws \Checkout\Tamara\CheckoutArgumentException
      * @throws CheckoutException
      */
     public function before()
@@ -82,7 +82,7 @@ class MetadataIntegrationTest extends SandboxTestFixture
     }
 
     /**
-     * @throws CheckoutArgumentException
+     * @throws \Checkout\Tamara\CheckoutArgumentException
      * @throws CheckoutException
      */
     private function createValidTokenRequest()

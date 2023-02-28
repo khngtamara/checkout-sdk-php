@@ -2,7 +2,7 @@
 
 namespace Checkout\Tests\Workflows;
 
-use Checkout\CheckoutApiException;
+use Checkout\Tamara\CheckoutApiException;
 use Closure;
 
 class WorkflowEventsIntegrationTest extends AbstractWorkflowIntegrationTest
@@ -35,7 +35,7 @@ class WorkflowEventsIntegrationTest extends AbstractWorkflowIntegrationTest
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldGetSubjectEventAndEvents()
     {

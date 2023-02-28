@@ -2,11 +2,11 @@
 
 namespace Checkout\Tests\Payments\Previous;
 
-use Checkout\CheckoutApiException;
-use Checkout\Common\Currency;
-use Checkout\Payments\Previous\Destination\PaymentRequestCardDestination;
-use Checkout\Payments\FundTransferType;
-use Checkout\Payments\Previous\PayoutRequest;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\Common\Currency;
+use Checkout\Tamara\Payments\Previous\Destination\PaymentRequestCardDestination;
+use Checkout\Tamara\Payments\FundTransferType;
+use Checkout\Tamara\Payments\Previous\PayoutRequest;
 use Checkout\Tests\TestCardSource;
 use DateTime;
 
@@ -29,7 +29,7 @@ class RequestPayoutsIntegrationTest extends AbstractPaymentsIntegrationTest
         $requestCardDestination->billing_address = $this->getAddress();
         $requestCardDestination->phone = $this->getPhone();
 
-        $payoutRequest = new PayoutRequest();
+        $payoutRequest = new \Checkout\Tamara\Payments\Previous\PayoutRequest();
         $payoutRequest->destination = $requestCardDestination;
         $payoutRequest->capture = false;
         $payoutRequest->reference = uniqid();

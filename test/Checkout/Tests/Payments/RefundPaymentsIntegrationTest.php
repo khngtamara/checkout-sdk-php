@@ -2,21 +2,21 @@
 
 namespace Checkout\Tests\Payments;
 
-use Checkout\CheckoutApiException;
-use Checkout\Payments\RefundRequest;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\Payments\RefundRequest;
 
 class RefundPaymentsIntegrationTest extends AbstractPaymentsIntegrationTest
 {
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldRefundCardPayment()
     {
         $paymentResponse = $this->makeCardPayment(true);
 
         $amount = $paymentResponse["amount"];
-        $refundRequest = new RefundRequest();
+        $refundRequest = new \Checkout\Tamara\Payments\RefundRequest();
         $refundRequest->reference = uniqid();
         $refundRequest->amount = $amount;
 
@@ -53,7 +53,7 @@ class RefundPaymentsIntegrationTest extends AbstractPaymentsIntegrationTest
     {
         $paymentResponse = $this->makeCardPayment(true);
 
-        $refundRequest = new RefundRequest();
+        $refundRequest = new \Checkout\Tamara\Payments\RefundRequest();
         $refundRequest->reference = uniqid("shouldRefundCardPayment_Idempotent");
         $refundRequest->amount = 2;
 

@@ -2,16 +2,16 @@
 
 namespace Checkout\Tests\Workflows;
 
-use Checkout\CheckoutApiException;
-use Checkout\Workflows\Reflows\ReflowByEventsRequest;
-use Checkout\Workflows\Reflows\ReflowBySubjectsRequest;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\Workflows\Reflows\ReflowByEventsRequest;
+use Checkout\Tamara\Workflows\Reflows\ReflowBySubjectsRequest;
 use Closure;
 
 class WorkflowsReflowIntegrationTest extends AbstractWorkflowIntegrationTest
 {
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldReflowByEvent()
     {
@@ -27,7 +27,7 @@ class WorkflowsReflowIntegrationTest extends AbstractWorkflowIntegrationTest
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldReflowBySubject()
     {
@@ -45,7 +45,7 @@ class WorkflowsReflowIntegrationTest extends AbstractWorkflowIntegrationTest
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldReflowByEventAndWorkflow()
     {
@@ -65,7 +65,7 @@ class WorkflowsReflowIntegrationTest extends AbstractWorkflowIntegrationTest
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldReflowByEvents()
     {
@@ -89,7 +89,7 @@ class WorkflowsReflowIntegrationTest extends AbstractWorkflowIntegrationTest
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldReflowBySubjectAndWorkflow()
     {

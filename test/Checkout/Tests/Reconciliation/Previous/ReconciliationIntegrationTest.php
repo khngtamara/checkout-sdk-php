@@ -2,13 +2,13 @@
 
 namespace Checkout\Tests\Reconciliation\Previous;
 
-use Checkout\CheckoutApiException;
-use Checkout\CheckoutArgumentException;
-use Checkout\CheckoutSdk;
-use Checkout\Common\QueryFilterDateRange;
-use Checkout\Environment;
-use Checkout\Previous\CheckoutApi;
-use Checkout\Reconciliation\Previous\ReconciliationQueryPaymentsFilter;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\CheckoutArgumentException;
+use Checkout\Tamara\CheckoutSdk;
+use Checkout\Tamara\Common\QueryFilterDateRange;
+use Checkout\Tamara\Environment;
+use Checkout\Tamara\Previous\CheckoutApi;
+use Checkout\Tamara\Reconciliation\Previous\ReconciliationQueryPaymentsFilter;
 use Checkout\Tests\SandboxTestFixture;
 use DateInterval;
 use DateTime;
@@ -19,8 +19,8 @@ use Monolog\Logger;
 class ReconciliationIntegrationTest extends SandboxTestFixture
 {
     /**
-     * @return CheckoutApi
-     * @throws CheckoutArgumentException
+     * @return \Checkout\Tamara\Previous\CheckoutApi
+     * @throws \Checkout\Tamara\CheckoutArgumentException
      */
     private function productionApi()
     {
@@ -51,12 +51,12 @@ class ReconciliationIntegrationTest extends SandboxTestFixture
     /**
      * @test
      * @throws CheckoutArgumentException
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldQueryPaymentsReport()
     {
         $this->markTestSkipped("only available in production");
-        $filter = new ReconciliationQueryPaymentsFilter();
+        $filter = new \Checkout\Tamara\Reconciliation\Previous\ReconciliationQueryPaymentsFilter();
         $filter->from = self::getQueryFilterDateRange()->from;
         $filter->to = self::getQueryFilterDateRange()->to;
 
@@ -85,7 +85,7 @@ class ReconciliationIntegrationTest extends SandboxTestFixture
 
     /**
      * @test
-     * @throws CheckoutArgumentException|CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutArgumentException|CheckoutApiException
      */
     public function shouldQueryStatementsReport()
     {

@@ -2,30 +2,30 @@
 
 namespace Checkout\Tests\Accounts;
 
-use Checkout\Accounts\AccountsFileRequest;
-use Checkout\Accounts\Company;
-use Checkout\Accounts\ContactDetails;
-use Checkout\Accounts\DateOfBirth;
-use Checkout\Accounts\EntityEmailAddresses;
-use Checkout\Accounts\Identification;
-use Checkout\Accounts\Individual;
-use Checkout\Accounts\InstrumentDetailsFasterPayments;
-use Checkout\Accounts\InstrumentDocument;
-use Checkout\Accounts\OnboardEntityRequest;
-use Checkout\Accounts\PaymentInstrumentRequest;
-use Checkout\Accounts\PaymentInstrumentsQuery;
-use Checkout\Accounts\Profile;
-use Checkout\Accounts\Representative;
-use Checkout\CheckoutApi;
-use Checkout\CheckoutApiException;
-use Checkout\CheckoutArgumentException;
-use Checkout\CheckoutException;
-use Checkout\CheckoutSdk;
-use Checkout\Common\Country;
-use Checkout\Common\Currency;
-use Checkout\Common\InstrumentType;
-use Checkout\OAuthScope;
-use Checkout\PlatformType;
+use Checkout\Tamara\Accounts\AccountsFileRequest;
+use Checkout\Tamara\Accounts\Company;
+use Checkout\Tamara\Accounts\ContactDetails;
+use Checkout\Tamara\Accounts\DateOfBirth;
+use Checkout\Tamara\Accounts\EntityEmailAddresses;
+use Checkout\Tamara\Accounts\Identification;
+use Checkout\Tamara\Accounts\Individual;
+use Checkout\Tamara\Accounts\InstrumentDetailsFasterPayments;
+use Checkout\Tamara\Accounts\InstrumentDocument;
+use Checkout\Tamara\Accounts\OnboardEntityRequest;
+use Checkout\Tamara\Accounts\PaymentInstrumentRequest;
+use Checkout\Tamara\Accounts\PaymentInstrumentsQuery;
+use Checkout\Tamara\Accounts\Profile;
+use Checkout\Tamara\Accounts\Representative;
+use Checkout\Tamara\CheckoutApi;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\CheckoutArgumentException;
+use Checkout\Tamara\CheckoutException;
+use Checkout\Tamara\CheckoutSdk;
+use Checkout\Tamara\Common\Country;
+use Checkout\Tamara\Common\Currency;
+use Checkout\Tamara\Common\InstrumentType;
+use Checkout\Tamara\OAuthScope;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\SandboxTestFixture;
 
 class AccountsIntegrationTest extends SandboxTestFixture
@@ -41,18 +41,18 @@ class AccountsIntegrationTest extends SandboxTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldCreateGetAndUpdateOnboardEntity()
     {
         $onboardEntityRequest = new OnboardEntityRequest();
         $onboardEntityRequest->reference = uniqid();
-        $emailAddresses = new EntityEmailAddresses();
+        $emailAddresses = new \Checkout\Tamara\Accounts\EntityEmailAddresses();
         $emailAddresses->primary = $this->randomEmail();
         $onboardEntityRequest->contact_details = new ContactDetails();
         $onboardEntityRequest->contact_details->phone = $this->getPhone();
         $onboardEntityRequest->contact_details->email_addresses = $emailAddresses;
-        $onboardEntityRequest->profile = new Profile();
+        $onboardEntityRequest->profile = new \Checkout\Tamara\Accounts\Profile();
         $onboardEntityRequest->profile->urls = array("https://www.superheroexample.com");
         $onboardEntityRequest->profile->mccs = array("0742");
         $onboardEntityRequest->individual = new Individual();
@@ -96,26 +96,26 @@ class AccountsIntegrationTest extends SandboxTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
-     * @throws CheckoutArgumentException
-     * @throws CheckoutException
+     * @throws \Checkout\Tamara\CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutArgumentException
+     * @throws \Checkout\Tamara\CheckoutException
      */
     public function shouldCreateAndRetrievePaymentInstrument()
     {
         $api = $this->getAccountsCheckoutApi();
 
-        $representative = new Representative();
+        $representative = new \Checkout\Tamara\Accounts\Representative();
         $representative->first_name = "John";
         $representative->last_name = "Montana";
         $representative->address = $this->getAddress();
-        $representative->identification = new Identification();
+        $representative->identification = new \Checkout\Tamara\Accounts\Identification();
         $representative->identification->national_id_number = "AB123456C";
 
         $onboardEntityRequest = new OnboardEntityRequest();
         $onboardEntityRequest->reference = uniqid();
         $onboardEntityRequest->contact_details = new ContactDetails();
         $onboardEntityRequest->contact_details->phone = $this->getPhone();
-        $onboardEntityRequest->contact_details->email_addresses = new EntityEmailAddresses();
+        $onboardEntityRequest->contact_details->email_addresses = new \Checkout\Tamara\Accounts\EntityEmailAddresses();
         $onboardEntityRequest->contact_details->email_addresses->primary = $this->randomEmail();
         $onboardEntityRequest->profile = new Profile();
         $onboardEntityRequest->profile->urls = array("https://www.superheroexample.com");
@@ -141,7 +141,7 @@ class AccountsIntegrationTest extends SandboxTestFixture
         $instrumentRequest->document = new InstrumentDocument();
         $instrumentRequest->document->type = "bank_statement";
         $instrumentRequest->document->file_id = $file["id"];
-        $instrumentRequest->instrument_details = new InstrumentDetailsFasterPayments();
+        $instrumentRequest->instrument_details = new \Checkout\Tamara\Accounts\InstrumentDetailsFasterPayments();
         $instrumentRequest->instrument_details->account_number = "12334454";
         $instrumentRequest->instrument_details->bank_code = "050389";
 
@@ -163,13 +163,13 @@ class AccountsIntegrationTest extends SandboxTestFixture
             "document"
         );
 
-        $queryResponse = $api->getAccountsClient()->queryPaymentInstruments($entity["id"], new PaymentInstrumentsQuery());
+        $queryResponse = $api->getAccountsClient()->queryPaymentInstruments($entity["id"], new \Checkout\Tamara\Accounts\PaymentInstrumentsQuery());
         $this->assertResponse($queryResponse, "data");
     }
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldUploadAccountsFile()
     {
@@ -196,8 +196,8 @@ class AccountsIntegrationTest extends SandboxTestFixture
 
     /**
      * @return CheckoutApi
-     * @throws CheckoutArgumentException
-     * @throws CheckoutException
+     * @throws \Checkout\Tamara\CheckoutArgumentException
+     * @throws \Checkout\Tamara\CheckoutException
      */
     private function getAccountsCheckoutApi()
     {
@@ -216,7 +216,7 @@ class AccountsIntegrationTest extends SandboxTestFixture
      */
     public function uploadFile()
     {
-        $fileRequest = new AccountsFileRequest();
+        $fileRequest = new \Checkout\Tamara\Accounts\AccountsFileRequest();
         $fileRequest->file = $this->getCheckoutFilePath();
         $fileRequest->content_type = "image/jpeg";
         $fileRequest->purpose = "bank_verification";

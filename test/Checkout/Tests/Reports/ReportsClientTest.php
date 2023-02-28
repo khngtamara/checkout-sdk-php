@@ -2,19 +2,19 @@
 
 namespace Checkout\Tests\Reports;
 
-use Checkout\CheckoutApiException;
-use Checkout\CheckoutArgumentException;
-use Checkout\CheckoutAuthorizationException;
-use Checkout\CheckoutException;
-use Checkout\PlatformType;
-use Checkout\Reports\ReportsClient;
-use Checkout\Reports\ReportsQuery;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\CheckoutArgumentException;
+use Checkout\Tamara\CheckoutAuthorizationException;
+use Checkout\Tamara\CheckoutException;
+use Checkout\Tamara\PlatformType;
+use Checkout\Tamara\Reports\ReportsClient;
+use Checkout\Tamara\Reports\ReportsQuery;
 use Checkout\Tests\UnitTestFixture;
 
 class ReportsClientTest extends UnitTestFixture
 {
     /**
-     * @var ReportsClient
+     * @var \Checkout\Tamara\Reports\ReportsClient
      */
     private $client;
 
@@ -27,7 +27,7 @@ class ReportsClientTest extends UnitTestFixture
     public function init()
     {
         $this->initMocks(PlatformType::$default);
-        $this->client = new ReportsClient($this->apiClient, $this->configuration);
+        $this->client = new \Checkout\Tamara\Reports\ReportsClient($this->apiClient, $this->configuration);
     }
 
     /**
@@ -46,7 +46,7 @@ class ReportsClientTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldGetReportDetails()
     {

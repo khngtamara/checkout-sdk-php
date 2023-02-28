@@ -2,18 +2,18 @@
 
 namespace Checkout\Tests\Apm\Previous\Klarna;
 
-use Checkout\Apm\Previous\Klarna\CreditSessionRequest;
-use Checkout\Apm\Previous\Klarna\KlarnaClient;
-use Checkout\Apm\Previous\Klarna\OrderCaptureRequest;
-use Checkout\CheckoutApiException;
-use Checkout\Payments\VoidRequest;
-use Checkout\PlatformType;
+use Checkout\Tamara\Apm\Previous\Klarna\CreditSessionRequest;
+use Checkout\Tamara\Apm\Previous\Klarna\KlarnaClient;
+use Checkout\Tamara\Apm\Previous\Klarna\OrderCaptureRequest;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\Payments\VoidRequest;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\UnitTestFixture;
 
 class KlarnaClientTest extends UnitTestFixture
 {
     /**
-     * @var KlarnaClient
+     * @var \Checkout\Tamara\Apm\Previous\Klarna\KlarnaClient
      */
     private $client;
 
@@ -36,7 +36,7 @@ class KlarnaClientTest extends UnitTestFixture
             ->method("post")
             ->willReturn("foo");
 
-        $response = $this->client->createCreditSession(new CreditSessionRequest());
+        $response = $this->client->createCreditSession(new \Checkout\Tamara\Apm\Previous\Klarna\CreditSessionRequest());
         $this->assertNotNull($response);
     }
 

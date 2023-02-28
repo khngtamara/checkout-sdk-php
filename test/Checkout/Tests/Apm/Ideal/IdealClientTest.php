@@ -2,15 +2,15 @@
 
 namespace Checkout\Tests\Apm\Ideal;
 
-use Checkout\Apm\Ideal\IdealClient;
-use Checkout\CheckoutApiException;
-use Checkout\PlatformType;
+use Checkout\Tamara\Apm\Ideal\IdealClient;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\UnitTestFixture;
 
 class IdealClientTest extends UnitTestFixture
 {
     /**
-     * @var IdealClient
+     * @var \Checkout\Tamara\Apm\Ideal\IdealClient
      */
     private $client;
 
@@ -39,7 +39,7 @@ class IdealClientTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldGetIssuers()
     {

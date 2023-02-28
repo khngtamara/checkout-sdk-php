@@ -2,26 +2,26 @@
 
 namespace Checkout\Tests\Payments;
 
-use Checkout\CheckoutApiException;
-use Checkout\CheckoutArgumentException;
-use Checkout\CheckoutAuthorizationException;
-use Checkout\CheckoutException;
-use Checkout\Common\AccountHolderIdentification;
-use Checkout\Common\AccountHolderIdentificationType;
-use Checkout\Common\Country;
-use Checkout\Common\Currency;
-use Checkout\Common\CustomerRequest;
-use Checkout\Payments\Request\PaymentRequest;
-use Checkout\Payments\Request\Source\RequestCardSource;
-use Checkout\Payments\Request\Source\RequestTokenSource;
-use Checkout\Payments\Sender\PaymentCorporateSender;
-use Checkout\Payments\Sender\PaymentIndividualSender;
-use Checkout\Payments\Sender\PaymentInstrumentSender;
-use Checkout\Payments\ThreeDsRequest;
-use Checkout\PlatformType;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\CheckoutArgumentException;
+use Checkout\Tamara\CheckoutAuthorizationException;
+use Checkout\Tamara\CheckoutException;
+use Checkout\Tamara\Common\AccountHolderIdentification;
+use Checkout\Tamara\Common\AccountHolderIdentificationType;
+use Checkout\Tamara\Common\Country;
+use Checkout\Tamara\Common\Currency;
+use Checkout\Tamara\Common\CustomerRequest;
+use Checkout\Tamara\Payments\Request\PaymentRequest;
+use Checkout\Tamara\Payments\Request\Source\RequestCardSource;
+use Checkout\Tamara\Payments\Request\Source\RequestTokenSource;
+use Checkout\Tamara\Payments\Sender\PaymentCorporateSender;
+use Checkout\Tamara\Payments\Sender\PaymentIndividualSender;
+use Checkout\Tamara\Payments\Sender\PaymentInstrumentSender;
+use Checkout\Tamara\Payments\ThreeDsRequest;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\SandboxTestFixture;
 use Checkout\Tests\TestCardSource;
-use Checkout\Tokens\CardTokenRequest;
+use Checkout\Tamara\Tokens\CardTokenRequest;
 use DateTime;
 
 abstract class AbstractPaymentsIntegrationTest extends SandboxTestFixture
@@ -31,7 +31,7 @@ abstract class AbstractPaymentsIntegrationTest extends SandboxTestFixture
 
     /**
      * @before
-     * @throws CheckoutAuthorizationException
+     * @throws \Checkout\Tamara\CheckoutAuthorizationException
      * @throws CheckoutArgumentException
      * @throws CheckoutException
      */
@@ -45,7 +45,7 @@ abstract class AbstractPaymentsIntegrationTest extends SandboxTestFixture
      * @param int $amount
      * @param DateTime|null $captureOn
      * @return mixed
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     protected function makeCardPayment($shouldCapture = false, $amount = 10, $captureOn = null)
     {
@@ -98,7 +98,7 @@ abstract class AbstractPaymentsIntegrationTest extends SandboxTestFixture
 
     /**
      * @return mixed
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     protected function makeTokenPayment()
     {
@@ -179,7 +179,7 @@ abstract class AbstractPaymentsIntegrationTest extends SandboxTestFixture
 
     /**
      * @return mixed
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     protected function requestToken()
     {

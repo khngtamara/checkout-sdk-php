@@ -2,7 +2,7 @@
 
 namespace Checkout\Tests\Disputes;
 
-use Checkout\Disputes\DisputesQueryFilter;
+use Checkout\Tamara\Disputes\DisputesQueryFilter;
 use DateTime;
 use PHPUnit\Framework\TestCase;
 
@@ -19,7 +19,7 @@ class DisputesQueryFilterTest extends TestCase
         $toDate = DateTime::createFromFormat("Y-m-d", "2021-02-15");
         $toDate->setTime(12, 12, 12);
 
-        $disputesQueryFilter = new DisputesQueryFilter();
+        $disputesQueryFilter = new \Checkout\Tamara\Disputes\DisputesQueryFilter();
         $disputesQueryFilter->limit = 100;
         $disputesQueryFilter->skip = 1;
         $disputesQueryFilter->from = $fromDate;

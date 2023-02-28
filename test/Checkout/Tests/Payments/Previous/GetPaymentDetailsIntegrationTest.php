@@ -2,14 +2,14 @@
 
 namespace Checkout\Tests\Payments\Previous;
 
-use Checkout\CheckoutApiException;
+use Checkout\Tamara\CheckoutApiException;
 
 class GetPaymentDetailsIntegrationTest extends AbstractPaymentsIntegrationTest
 {
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldGetPaymentDetails()
     {

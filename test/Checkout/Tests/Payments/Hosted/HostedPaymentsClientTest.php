@@ -2,10 +2,10 @@
 
 namespace Checkout\Tests\Payments\Hosted;
 
-use Checkout\CheckoutApiException;
-use Checkout\Payments\Hosted\HostedPaymentsClient;
-use Checkout\Payments\Hosted\HostedPaymentsSessionRequest;
-use Checkout\PlatformType;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\Payments\Hosted\HostedPaymentsClient;
+use Checkout\Tamara\Payments\Hosted\HostedPaymentsSessionRequest;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\UnitTestFixture;
 
 class HostedPaymentsClientTest extends UnitTestFixture

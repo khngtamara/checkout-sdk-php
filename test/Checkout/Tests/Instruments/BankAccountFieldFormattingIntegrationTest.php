@@ -2,16 +2,16 @@
 
 namespace Checkout\Tests\Instruments;
 
-use Checkout\CheckoutApiException;
-use Checkout\CheckoutArgumentException;
-use Checkout\CheckoutAuthorizationException;
-use Checkout\CheckoutException;
-use Checkout\Common\Country;
-use Checkout\Common\Currency;
-use Checkout\Common\AccountHolderType;
-use Checkout\Instruments\Get\BankAccountFieldQuery;
-use Checkout\Instruments\Get\PaymentNetwork;
-use Checkout\PlatformType;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\CheckoutArgumentException;
+use Checkout\Tamara\CheckoutAuthorizationException;
+use Checkout\Tamara\CheckoutException;
+use Checkout\Tamara\Common\Country;
+use Checkout\Tamara\Common\Currency;
+use Checkout\Tamara\Common\AccountHolderType;
+use Checkout\Tamara\Instruments\Get\BankAccountFieldQuery;
+use Checkout\Tamara\Instruments\Get\PaymentNetwork;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\SandboxTestFixture;
 
 class BankAccountFieldFormattingIntegrationTest extends SandboxTestFixture
@@ -19,8 +19,8 @@ class BankAccountFieldFormattingIntegrationTest extends SandboxTestFixture
 
     /**
      * @before
-     * @throws CheckoutAuthorizationException
-     * @throws CheckoutArgumentException
+     * @throws \Checkout\Tamara\CheckoutAuthorizationException
+     * @throws \Checkout\Tamara\CheckoutArgumentException
      * @throws CheckoutException
      */
     public function before()
@@ -30,7 +30,7 @@ class BankAccountFieldFormattingIntegrationTest extends SandboxTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldFailGetBankAccountFieldFormattingWhenNoOAuthIsProvided()
     {

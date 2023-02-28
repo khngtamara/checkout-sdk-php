@@ -2,34 +2,34 @@
 
 namespace Checkout\Tests\Risk\Previous;
 
-use Checkout\CheckoutApiException;
-use Checkout\CheckoutArgumentException;
-use Checkout\CheckoutAuthorizationException;
-use Checkout\CheckoutException;
-use Checkout\Common\Address;
-use Checkout\Common\Country;
-use Checkout\Common\Currency;
-use Checkout\Common\CustomerRequest;
-use Checkout\Common\InstrumentType;
-use Checkout\Instruments\Previous\CreateInstrumentRequest;
-use Checkout\Instruments\Previous\InstrumentAccountHolder;
-use Checkout\PlatformType;
-use Checkout\Risk\Device;
-use Checkout\Risk\Location;
-use Checkout\Risk\PreAuthentication\PreAuthenticationAssessmentRequest;
-use Checkout\Risk\PreCapture\AuthenticationResult;
-use Checkout\Risk\PreCapture\AuthorizationResult;
-use Checkout\Risk\PreCapture\PreCaptureAssessmentRequest;
-use Checkout\Risk\RiskPayment;
-use Checkout\Risk\RiskShippingDetails;
-use Checkout\Risk\Source\CardSourcePrism;
-use Checkout\Risk\Source\CustomerSourcePrism;
-use Checkout\Risk\Source\IdSourcePrism;
-use Checkout\Risk\Source\RiskPaymentRequestSource;
-use Checkout\Risk\Source\RiskRequestTokenSource;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\CheckoutArgumentException;
+use Checkout\Tamara\CheckoutAuthorizationException;
+use Checkout\Tamara\CheckoutException;
+use Checkout\Tamara\Common\Address;
+use Checkout\Tamara\Common\Country;
+use Checkout\Tamara\Common\Currency;
+use Checkout\Tamara\Common\CustomerRequest;
+use Checkout\Tamara\Common\InstrumentType;
+use Checkout\Tamara\Instruments\Previous\CreateInstrumentRequest;
+use Checkout\Tamara\Instruments\Previous\InstrumentAccountHolder;
+use Checkout\Tamara\PlatformType;
+use Checkout\Tamara\Risk\Device;
+use Checkout\Tamara\Risk\Location;
+use Checkout\Tamara\Risk\PreAuthentication\PreAuthenticationAssessmentRequest;
+use Checkout\Tamara\Risk\PreCapture\AuthenticationResult;
+use Checkout\Tamara\Risk\PreCapture\AuthorizationResult;
+use Checkout\Tamara\Risk\PreCapture\PreCaptureAssessmentRequest;
+use Checkout\Tamara\Risk\RiskPayment;
+use Checkout\Tamara\Risk\RiskShippingDetails;
+use Checkout\Tamara\Risk\Source\CardSourcePrism;
+use Checkout\Tamara\Risk\Source\CustomerSourcePrism;
+use Checkout\Tamara\Risk\Source\IdSourcePrism;
+use Checkout\Tamara\Risk\Source\RiskPaymentRequestSource;
+use Checkout\Tamara\Risk\Source\RiskRequestTokenSource;
 use Checkout\Tests\SandboxTestFixture;
 use Checkout\Tests\TestCardSource;
-use Checkout\Tokens\CardTokenRequest;
+use Checkout\Tamara\Tokens\CardTokenRequest;
 use DateTime;
 
 class RiskIntegrationTest extends SandboxTestFixture
@@ -48,7 +48,7 @@ class RiskIntegrationTest extends SandboxTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldPreCaptureAndAuthenticateCard()
     {
@@ -72,11 +72,11 @@ class RiskIntegrationTest extends SandboxTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldPreCaptureAndAuthenticateCustomer()
     {
-        $customerRequest = new \Checkout\Customers\CustomerRequest();
+        $customerRequest = new \Checkout\Tamara\Customers\CustomerRequest();
         $customerRequest->email = $this->randomEmail();
         $customerRequest->name = "User";
         $customerRequest->phone = $this->getPhone();
@@ -128,7 +128,7 @@ class RiskIntegrationTest extends SandboxTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldPreCaptureAndAuthenticateToken()
     {
@@ -153,7 +153,7 @@ class RiskIntegrationTest extends SandboxTestFixture
     }
 
     /**
-     * @param RiskPaymentRequestSource $requestSource
+     * @param \Checkout\Tamara\Risk\Source\RiskPaymentRequestSource $requestSource
      * @throws CheckoutApiException
      */
     private function doAuthenticationAssessmentRequest(RiskPaymentRequestSource $requestSource)
@@ -188,7 +188,7 @@ class RiskIntegrationTest extends SandboxTestFixture
 
     /**
      * @param RiskPaymentRequestSource $requestSource
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     private function doPreCaptureAssessmentRequest(RiskPaymentRequestSource $requestSource)
     {
@@ -233,7 +233,7 @@ class RiskIntegrationTest extends SandboxTestFixture
     }
 
     /**
-     * @return RiskShippingDetails
+     * @return \Checkout\Tamara\Risk\RiskShippingDetails
      */
     private function getRiskShippingDetails()
     {

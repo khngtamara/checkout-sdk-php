@@ -2,24 +2,24 @@
 
 namespace Checkout\Tests\Payments;
 
-use Checkout\CheckoutApiException;
-use Checkout\Common\AccountHolder;
-use Checkout\Payments\AuthorizationRequest;
-use Checkout\Payments\CaptureRequest;
-use Checkout\Payments\PaymentsClient;
-use Checkout\Payments\PaymentsQueryFilter;
-use Checkout\Payments\Request\PaymentRequest;
-use Checkout\Payments\Request\PayoutRequest;
-use Checkout\Payments\Request\Source\RequestProviderTokenSource;
-use Checkout\Payments\RefundRequest;
-use Checkout\Payments\VoidRequest;
-use Checkout\PlatformType;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\Common\AccountHolder;
+use Checkout\Tamara\Payments\AuthorizationRequest;
+use Checkout\Tamara\Payments\CaptureRequest;
+use Checkout\Tamara\Payments\PaymentsClient;
+use Checkout\Tamara\Payments\PaymentsQueryFilter;
+use Checkout\Tamara\Payments\Request\PaymentRequest;
+use Checkout\Tamara\Payments\Request\PayoutRequest;
+use Checkout\Tamara\Payments\Request\Source\RequestProviderTokenSource;
+use Checkout\Tamara\Payments\RefundRequest;
+use Checkout\Tamara\Payments\VoidRequest;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\UnitTestFixture;
 
 class PaymentsClientTest extends UnitTestFixture
 {
     /**
-     * @var PaymentsClient
+     * @var \Checkout\Tamara\Payments\PaymentsClient
      */
     private $client;
 
@@ -34,7 +34,7 @@ class PaymentsClientTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldRequestPayment()
     {
@@ -57,7 +57,7 @@ class PaymentsClientTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldRequestPayout()
     {
@@ -72,7 +72,7 @@ class PaymentsClientTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldGetPaymentsList()
     {
@@ -80,13 +80,13 @@ class PaymentsClientTest extends UnitTestFixture
             ->method("query")
             ->willReturn("response");
 
-        $response = $this->client->getPaymentsList(new PaymentsQueryFilter());
+        $response = $this->client->getPaymentsList(new \Checkout\Tamara\Payments\PaymentsQueryFilter());
         $this->assertNotNull($response);
     }
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldGetPaymentDetails()
     {
@@ -101,7 +101,7 @@ class PaymentsClientTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldGetPaymentActions()
     {
@@ -116,7 +116,7 @@ class PaymentsClientTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldCapturePayment()
     {
@@ -125,13 +125,13 @@ class PaymentsClientTest extends UnitTestFixture
             ->method("post")
             ->willReturn("response");
 
-        $response = $this->client->capturePayment("payment_id", new CaptureRequest());
+        $response = $this->client->capturePayment("payment_id", new \Checkout\Tamara\Payments\CaptureRequest());
         $this->assertNotNull($response);
     }
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldRefundPayment()
     {
@@ -140,13 +140,13 @@ class PaymentsClientTest extends UnitTestFixture
             ->method("post")
             ->willReturn("response");
 
-        $response = $this->client->refundPayment("payment_id", new RefundRequest());
+        $response = $this->client->refundPayment("payment_id", new \Checkout\Tamara\Payments\RefundRequest());
         $this->assertNotNull($response);
     }
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldVoidPayment()
     {
@@ -161,7 +161,7 @@ class PaymentsClientTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldIncrementPaymentAuthorization()
     {
@@ -176,7 +176,7 @@ class PaymentsClientTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldIncrementPaymentAuthorizationIdempotently()
     {

@@ -2,27 +2,27 @@
 
 namespace Checkout\Tests\Payments;
 
-use Checkout\CheckoutApiException;
-use Checkout\Common\Currency;
-use Checkout\Common\CustomerRequest;
-use Checkout\Payments\AuthorizationRequest;
-use Checkout\Payments\AuthorizationType;
-use Checkout\Payments\Request\PaymentRequest;
-use Checkout\Payments\Request\Source\RequestCardSource;
-use Checkout\Payments\Sender\PaymentIndividualSender;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\Common\Currency;
+use Checkout\Tamara\Common\CustomerRequest;
+use Checkout\Tamara\Payments\AuthorizationRequest;
+use Checkout\Tamara\Payments\AuthorizationType;
+use Checkout\Tamara\Payments\Request\PaymentRequest;
+use Checkout\Tamara\Payments\Request\Source\RequestCardSource;
+use Checkout\Tamara\Payments\Sender\PaymentIndividualSender;
 use Checkout\Tests\TestCardSource;
 
 class IncrementPaymentsAuthorizationsTest extends AbstractPaymentsIntegrationTest
 {
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldIncrementPaymentAuthorization()
     {
         $paymentResponse = $this->makeEstimatedAuthorizedPayment();
 
-        $authorizationRequest = new AuthorizationRequest();
+        $authorizationRequest = new \Checkout\Tamara\Payments\AuthorizationRequest();
         $authorizationRequest->amount = 10;
         $authorizationRequest->reference = uniqid();
         $authorizationRequest->metadata = array("param1" => "value1", "param2" => "value2");
@@ -47,13 +47,13 @@ class IncrementPaymentsAuthorizationsTest extends AbstractPaymentsIntegrationTes
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldIncrementPaymentAuthorizationIdempotent()
     {
         $paymentResponse = $this->makeEstimatedAuthorizedPayment();
 
-        $authorizationRequest = new AuthorizationRequest();
+        $authorizationRequest = new \Checkout\Tamara\Payments\AuthorizationRequest();
         $authorizationRequest->amount = 10;
         $authorizationRequest->reference = uniqid();
         $authorizationRequest->metadata = array("param1" => "value1", "param2" => "value2");
@@ -68,7 +68,7 @@ class IncrementPaymentsAuthorizationsTest extends AbstractPaymentsIntegrationTes
 
     /**
      * @return mixed
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     private function makeEstimatedAuthorizedPayment()
     {

@@ -2,11 +2,11 @@
 
 namespace Checkout\Tests\Sessions;
 
-use Checkout\CheckoutApiException;
-use Checkout\CheckoutAuthorizationException;
-use Checkout\Common\ChallengeIndicatorType;
-use Checkout\Sessions\Category;
-use Checkout\Sessions\TransactionType;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\CheckoutAuthorizationException;
+use Checkout\Tamara\Common\ChallengeIndicatorType;
+use Checkout\Tamara\Sessions\Category;
+use Checkout\Tamara\Sessions\TransactionType;
 
 class RequestAndGetSessionsIntegrationTest extends AbstractSessionsIntegrationTest
 {
@@ -14,7 +14,7 @@ class RequestAndGetSessionsIntegrationTest extends AbstractSessionsIntegrationTe
     /**
      * @test
      * @throws CheckoutApiException
-     * @throws CheckoutAuthorizationException
+     * @throws \Checkout\Tamara\CheckoutAuthorizationException
      */
     public function shouldRequestAndGetCardSessionBrowserSession()
     {
@@ -43,7 +43,7 @@ class RequestAndGetSessionsIntegrationTest extends AbstractSessionsIntegrationTe
     /**
      * @test
      * @throws CheckoutApiException
-     * @throws CheckoutAuthorizationException
+     * @throws \Checkout\Tamara\CheckoutAuthorizationException
      */
     public function shouldRequestAndGetCardSessionAppSession()
     {
@@ -51,7 +51,7 @@ class RequestAndGetSessionsIntegrationTest extends AbstractSessionsIntegrationTe
         $appSession = $this->getAppSession();
         $responseNonHostedSession = $this->createNonHostedSession(
             $appSession,
-            Category::$payment,
+            \Checkout\Tamara\Sessions\Category::$payment,
             ChallengeIndicatorType::$no_preference,
             TransactionType::$goods_service
         );

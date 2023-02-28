@@ -2,17 +2,17 @@
 
 namespace Checkout\Tests\Accounts;
 
-use Checkout\Accounts\AccountsClient;
-use Checkout\Accounts\AccountsFileRequest;
-use Checkout\Accounts\AccountsPaymentInstrument;
-use Checkout\Accounts\OnboardEntityRequest;
-use Checkout\Accounts\PaymentInstrumentRequest;
-use Checkout\Accounts\PaymentInstrumentsQuery;
-use Checkout\Accounts\UpdatePaymentInstrumentRequest;
-use Checkout\Accounts\UpdateScheduleRequest;
-use Checkout\CheckoutApiException;
-use Checkout\Common\Currency;
-use Checkout\PlatformType;
+use Checkout\Tamara\Accounts\AccountsClient;
+use Checkout\Tamara\Accounts\AccountsFileRequest;
+use Checkout\Tamara\Accounts\AccountsPaymentInstrument;
+use Checkout\Tamara\Accounts\OnboardEntityRequest;
+use Checkout\Tamara\Accounts\PaymentInstrumentRequest;
+use Checkout\Tamara\Accounts\PaymentInstrumentsQuery;
+use Checkout\Tamara\Accounts\UpdatePaymentInstrumentRequest;
+use Checkout\Tamara\Accounts\UpdateScheduleRequest;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\Common\Currency;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\UnitTestFixture;
 
 class AccountsClientTest extends UnitTestFixture
@@ -31,7 +31,7 @@ class AccountsClientTest extends UnitTestFixture
     public function init()
     {
         $this->initMocks(PlatformType::$default_oauth);
-        $this->client = new AccountsClient(
+        $this->client = new \Checkout\Tamara\Accounts\AccountsClient(
             $this->apiClient,
             $this->apiClient,
             $this->configuration
@@ -48,7 +48,7 @@ class AccountsClientTest extends UnitTestFixture
             ->method("post")
             ->willReturn("response");
 
-        $response = $this->client->CreateEntity(new OnboardEntityRequest());
+        $response = $this->client->CreateEntity(new \Checkout\Tamara\Accounts\OnboardEntityRequest());
 
         $this->assertNotNull($response);
     }
@@ -128,7 +128,7 @@ class AccountsClientTest extends UnitTestFixture
             ->method("put")
             ->willReturn("response");
 
-        $response = $this->client->updatePayoutSchedule("entity_id", Currency::$USD, new UpdateScheduleRequest());
+        $response = $this->client->updatePayoutSchedule("entity_id", Currency::$USD, new \Checkout\Tamara\Accounts\UpdateScheduleRequest());
 
         $this->assertNotNull($response);
     }
@@ -173,7 +173,7 @@ class AccountsClientTest extends UnitTestFixture
             ->method("query")
             ->willReturn("response");
 
-        $response = $this->client->queryPaymentInstruments("entity_id", new PaymentInstrumentsQuery());
+        $response = $this->client->queryPaymentInstruments("entity_id", new \Checkout\Tamara\Accounts\PaymentInstrumentsQuery());
 
         $this->assertNotNull($response);
     }
@@ -188,7 +188,7 @@ class AccountsClientTest extends UnitTestFixture
             ->method("post")
             ->willReturn("response");
 
-        $response = $this->client->createBankPaymentInstrument("entity_id", new PaymentInstrumentRequest());
+        $response = $this->client->createBankPaymentInstrument("entity_id", new \Checkout\Tamara\Accounts\PaymentInstrumentRequest());
 
         $this->assertNotNull($response);
     }
@@ -203,7 +203,7 @@ class AccountsClientTest extends UnitTestFixture
             ->method("patch")
             ->willReturn("response");
 
-        $response = $this->client->updateBankPaymentInstrumentDetails("entity_id", "instrument_id", new UpdatePaymentInstrumentRequest());
+        $response = $this->client->updateBankPaymentInstrumentDetails("entity_id", "instrument_id", new \Checkout\Tamara\Accounts\UpdatePaymentInstrumentRequest());
 
         $this->assertNotNull($response);
     }

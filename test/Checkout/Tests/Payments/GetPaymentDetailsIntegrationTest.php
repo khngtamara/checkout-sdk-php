@@ -2,7 +2,7 @@
 
 namespace Checkout\Tests\Payments;
 
-use Checkout\CheckoutApiException;
+use Checkout\Tamara\CheckoutApiException;
 use Closure;
 
 class GetPaymentDetailsIntegrationTest extends AbstractPaymentsIntegrationTest

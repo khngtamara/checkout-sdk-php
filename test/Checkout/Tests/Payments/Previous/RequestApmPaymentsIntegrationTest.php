@@ -2,29 +2,29 @@
 
 namespace Checkout\Tests\Payments\Previous;
 
-use Checkout\Common\Country;
-use Checkout\Common\Currency;
-use Checkout\Payments\Previous\PaymentRequest;
-use Checkout\Payments\Previous\Source\Apm\IntegrationType;
-use Checkout\Payments\Previous\Source\Apm\RequestAlipaySource;
-use Checkout\Payments\Previous\Source\Apm\RequestBancontactSource;
-use Checkout\Payments\Previous\Source\Apm\RequestBenefitPaySource;
-use Checkout\Payments\Previous\Source\Apm\RequestBoletoSource;
-use Checkout\Payments\Previous\Source\Apm\RequestEpsSource;
-use Checkout\Payments\Previous\Source\Apm\RequestFawrySource;
-use Checkout\Payments\Previous\Source\Apm\RequestGiropaySource;
-use Checkout\Payments\Previous\Source\Apm\RequestIdealSource;
-use Checkout\Payments\Previous\Source\Apm\RequestKnetSource;
-use Checkout\Payments\Previous\Source\Apm\RequestMultiBancoSource;
-use Checkout\Payments\Previous\Source\Apm\RequestOxxoSource;
-use Checkout\Payments\Previous\Source\Apm\RequestP24Source;
-use Checkout\Payments\Previous\Source\Apm\RequestPagoFacilSource;
-use Checkout\Payments\Previous\Source\Apm\RequestPayPalSource;
-use Checkout\Payments\Previous\Source\Apm\RequestPoliSource;
-use Checkout\Payments\Previous\Source\Apm\RequestQPaySource;
-use Checkout\Payments\Previous\Source\Apm\RequestRapiPagoSource;
-use Checkout\Payments\Previous\Source\Apm\RequestSofortSource;
-use Checkout\Payments\Request\Source\Apm\FawryProduct;
+use Checkout\Tamara\Common\Country;
+use Checkout\Tamara\Common\Currency;
+use Checkout\Tamara\Payments\Previous\PaymentRequest;
+use Checkout\Tamara\Payments\Previous\Source\Apm\IntegrationType;
+use Checkout\Tamara\Payments\Previous\Source\Apm\RequestAlipaySource;
+use Checkout\Tamara\Payments\Previous\Source\Apm\RequestBancontactSource;
+use Checkout\Tamara\Payments\Previous\Source\Apm\RequestBenefitPaySource;
+use Checkout\Tamara\Payments\Previous\Source\Apm\RequestBoletoSource;
+use Checkout\Tamara\Payments\Previous\Source\Apm\RequestEpsSource;
+use Checkout\Tamara\Payments\Previous\Source\Apm\RequestFawrySource;
+use Checkout\Tamara\Payments\Previous\Source\Apm\RequestGiropaySource;
+use Checkout\Tamara\Payments\Previous\Source\Apm\RequestIdealSource;
+use Checkout\Tamara\Payments\Previous\Source\Apm\RequestKnetSource;
+use Checkout\Tamara\Payments\Previous\Source\Apm\RequestMultiBancoSource;
+use Checkout\Tamara\Payments\Previous\Source\Apm\RequestOxxoSource;
+use Checkout\Tamara\Payments\Previous\Source\Apm\RequestP24Source;
+use Checkout\Tamara\Payments\Previous\Source\Apm\RequestPagoFacilSource;
+use Checkout\Tamara\Payments\Previous\Source\Apm\RequestPayPalSource;
+use Checkout\Tamara\Payments\Previous\Source\Apm\RequestPoliSource;
+use Checkout\Tamara\Payments\Previous\Source\Apm\RequestQPaySource;
+use Checkout\Tamara\Payments\Previous\Source\Apm\RequestRapiPagoSource;
+use Checkout\Tamara\Payments\Previous\Source\Apm\RequestSofortSource;
+use Checkout\Tamara\Payments\Request\Source\Apm\FawryProduct;
 
 class RequestApmPaymentsIntegrationTest extends AbstractPaymentsIntegrationTest
 {
@@ -72,7 +72,7 @@ class RequestApmPaymentsIntegrationTest extends AbstractPaymentsIntegrationTest
         $requestSource = new RequestBenefitPaySource();
         $requestSource->integration_type = "mobile";
 
-        $paymentRequest = new PaymentRequest();
+        $paymentRequest = new \Checkout\Tamara\Payments\Previous\PaymentRequest();
         $paymentRequest->source = $requestSource;
         $paymentRequest->amount = 100;
         $paymentRequest->currency = Currency::$USD;
@@ -110,7 +110,7 @@ class RequestApmPaymentsIntegrationTest extends AbstractPaymentsIntegrationTest
         $requestSource->integration_type = IntegrationType::$redirect;
         $requestSource->payer = $this->getPayer();
 
-        $paymentRequest = new PaymentRequest();
+        $paymentRequest = new \Checkout\Tamara\Payments\Previous\PaymentRequest();
         $paymentRequest->source = $requestSource;
         $paymentRequest->amount = 100;
         $paymentRequest->currency = Currency::$BRL;
@@ -226,7 +226,7 @@ class RequestApmPaymentsIntegrationTest extends AbstractPaymentsIntegrationTest
 
         $requestSource->products = array($subObj);
 
-        $paymentRequest = new PaymentRequest();
+        $paymentRequest = new \Checkout\Tamara\Payments\Previous\PaymentRequest();
         $paymentRequest->source = $requestSource;
         $paymentRequest->amount = 1000;
         $paymentRequest->currency = Currency::$EGP;
@@ -260,7 +260,7 @@ class RequestApmPaymentsIntegrationTest extends AbstractPaymentsIntegrationTest
         $requestSource = new RequestGiropaySource();
         $requestSource->purpose = "CKO Giropay test";
 
-        $paymentRequest = new PaymentRequest();
+        $paymentRequest = new \Checkout\Tamara\Payments\Previous\PaymentRequest();
         $paymentRequest->source = $requestSource;
         $paymentRequest->amount = 1000;
         $paymentRequest->currency = Currency::$EUR;
@@ -374,7 +374,7 @@ class RequestApmPaymentsIntegrationTest extends AbstractPaymentsIntegrationTest
         $requestSource->description = "simulate Via Pago Facil Demo Payment";
         $requestSource->payer = $this->getPayer();
 
-        $paymentRequest = new PaymentRequest();
+        $paymentRequest = new \Checkout\Tamara\Payments\Previous\PaymentRequest();
         $paymentRequest->source = $requestSource;
         $paymentRequest->amount = 100000;
         $paymentRequest->currency = Currency::$ARS;
@@ -412,7 +412,7 @@ class RequestApmPaymentsIntegrationTest extends AbstractPaymentsIntegrationTest
         $requestSource->description = "simulate Via Rapi Pago Demo Payment";
         $requestSource->payer = $this->getPayer();
 
-        $paymentRequest = new PaymentRequest();
+        $paymentRequest = new \Checkout\Tamara\Payments\Previous\PaymentRequest();
         $paymentRequest->source = $requestSource;
         $paymentRequest->amount = 100000;
         $paymentRequest->currency = Currency::$ARS;
@@ -446,7 +446,7 @@ class RequestApmPaymentsIntegrationTest extends AbstractPaymentsIntegrationTest
     {
         $requestSource = new RequestSofortSource();
 
-        $paymentRequest = new PaymentRequest();
+        $paymentRequest = new \Checkout\Tamara\Payments\Previous\PaymentRequest();
         $paymentRequest->source = $requestSource;
         $paymentRequest->amount = 100;
         $paymentRequest->currency = Currency::$EUR;
@@ -555,7 +555,7 @@ class RequestApmPaymentsIntegrationTest extends AbstractPaymentsIntegrationTest
         $requestSource->invoice_number = "CKO00001";
         $requestSource->logo_url = "https://www.example.com/logo.jpg";
 
-        $paymentRequest = new PaymentRequest();
+        $paymentRequest = new \Checkout\Tamara\Payments\Previous\PaymentRequest();
         $paymentRequest->source = $requestSource;
         $paymentRequest->amount = 100;
         $paymentRequest->currency = Currency::$EUR;
@@ -702,7 +702,7 @@ class RequestApmPaymentsIntegrationTest extends AbstractPaymentsIntegrationTest
         $requestSource->account_holder_name = "Bruce Wayne";
         $requestSource->billing_descriptor = "CKO Demo - Multibanco";
 
-        $paymentRequest = new PaymentRequest();
+        $paymentRequest = new \Checkout\Tamara\Payments\Previous\PaymentRequest();
         $paymentRequest->source = $requestSource;
         $paymentRequest->amount = 100;
         $paymentRequest->currency = Currency::$QAR;

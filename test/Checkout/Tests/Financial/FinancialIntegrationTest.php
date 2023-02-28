@@ -2,12 +2,12 @@
 
 namespace Checkout\Tests\Financial;
 
-use Checkout\CheckoutApiException;
-use Checkout\CheckoutArgumentException;
-use Checkout\CheckoutAuthorizationException;
-use Checkout\CheckoutException;
-use Checkout\Financial\FinancialActionsQuery;
-use Checkout\PlatformType;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\CheckoutArgumentException;
+use Checkout\Tamara\CheckoutAuthorizationException;
+use Checkout\Tamara\CheckoutException;
+use Checkout\Tamara\Financial\FinancialActionsQuery;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\Payments\AbstractPaymentsIntegrationTest;
 use Closure;
 
@@ -15,7 +15,7 @@ class FinancialIntegrationTest extends AbstractPaymentsIntegrationTest
 {
     /**
      * @before
-     * @throws CheckoutAuthorizationException
+     * @throws \Checkout\Tamara\CheckoutAuthorizationException
      * @throws CheckoutArgumentException
      * @throws CheckoutException
      */
@@ -26,7 +26,7 @@ class FinancialIntegrationTest extends AbstractPaymentsIntegrationTest
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldQueryFinancialActions()
     {

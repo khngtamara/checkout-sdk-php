@@ -2,20 +2,20 @@
 
 namespace Checkout\Tests\Workflows;
 
-use Checkout\CheckoutApiException;
-use Checkout\PlatformType;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\UnitTestFixture;
-use Checkout\Workflows\Actions\WebhookWorkflowActionRequest;
-use Checkout\Workflows\Conditions\EntityWorkflowConditionRequest;
-use Checkout\Workflows\CreateWorkflowRequest;
-use Checkout\Workflows\Reflows\ReflowByEventsRequest;
-use Checkout\Workflows\UpdateWorkflowRequest;
-use Checkout\Workflows\WorkflowsClient;
+use Checkout\Tamara\Workflows\Actions\WebhookWorkflowActionRequest;
+use Checkout\Tamara\Workflows\Conditions\EntityWorkflowConditionRequest;
+use Checkout\Tamara\Workflows\CreateWorkflowRequest;
+use Checkout\Tamara\Workflows\Reflows\ReflowByEventsRequest;
+use Checkout\Tamara\Workflows\UpdateWorkflowRequest;
+use Checkout\Tamara\Workflows\WorkflowsClient;
 
 class WorkflowsClientTest extends UnitTestFixture
 {
     /**
-     * @var WorkflowsClient
+     * @var \Checkout\Tamara\Workflows\WorkflowsClient
      */
     private $client;
 
@@ -25,7 +25,7 @@ class WorkflowsClientTest extends UnitTestFixture
     public function init()
     {
         $this->initMocks(PlatformType::$default);
-        $this->client = new WorkflowsClient($this->apiClient, $this->configuration);
+        $this->client = new \Checkout\Tamara\Workflows\WorkflowsClient($this->apiClient, $this->configuration);
     }
 
     /**
@@ -72,7 +72,7 @@ class WorkflowsClientTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldUpdateWorkflow()
     {
@@ -86,7 +86,7 @@ class WorkflowsClientTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldRemoveWorkflow()
     {
@@ -112,7 +112,7 @@ class WorkflowsClientTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldUpdateWorkflowCondition()
     {
@@ -125,7 +125,7 @@ class WorkflowsClientTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function getEventTypes()
     {
@@ -153,7 +153,7 @@ class WorkflowsClientTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function getEvent()
     {
@@ -167,7 +167,7 @@ class WorkflowsClientTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function reflowByEvent()
     {
@@ -193,7 +193,7 @@ class WorkflowsClientTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function reflowByEventAndWorkflow()
     {
@@ -206,7 +206,7 @@ class WorkflowsClientTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function reflowBySubjectAndWorkflow()
     {
@@ -232,7 +232,7 @@ class WorkflowsClientTest extends UnitTestFixture
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldGetActionInvocations()
     {

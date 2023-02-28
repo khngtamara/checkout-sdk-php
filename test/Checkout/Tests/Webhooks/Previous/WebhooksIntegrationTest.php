@@ -2,13 +2,13 @@
 
 namespace Checkout\Tests\Webhooks\Previous;
 
-use Checkout\CheckoutApiException;
-use Checkout\CheckoutArgumentException;
-use Checkout\CheckoutAuthorizationException;
-use Checkout\CheckoutException;
-use Checkout\PlatformType;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\CheckoutArgumentException;
+use Checkout\Tamara\CheckoutAuthorizationException;
+use Checkout\Tamara\CheckoutException;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\SandboxTestFixture;
-use Checkout\Webhooks\Previous\WebhookRequest;
+use Checkout\Tamara\Webhooks\Previous\WebhookRequest;
 
 class WebhooksIntegrationTest extends SandboxTestFixture
 {
@@ -18,8 +18,8 @@ class WebhooksIntegrationTest extends SandboxTestFixture
     /**
      * @before
      * @throws CheckoutAuthorizationException
-     * @throws CheckoutArgumentException
-     * @throws CheckoutException
+     * @throws \Checkout\Tamara\CheckoutArgumentException
+     * @throws \Checkout\Tamara\CheckoutException
      */
     public function cleanUp()
     {
@@ -40,7 +40,7 @@ class WebhooksIntegrationTest extends SandboxTestFixture
     public function shouldCreateUpdateAndDeleteWebhook()
     {
         $this->markTestSkipped("unstable");
-        $webhookRequest = new WebhookRequest();
+        $webhookRequest = new \Checkout\Tamara\Webhooks\Previous\WebhookRequest();
         $webhookRequest->url = "https://test.checkout.com/webhooks";
         $webhookRequest->content_type = "json";
         $webhookRequest->event_types = self::EVENT_TYPES;

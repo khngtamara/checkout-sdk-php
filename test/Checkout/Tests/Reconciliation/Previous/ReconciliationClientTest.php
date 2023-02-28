@@ -2,16 +2,16 @@
 
 namespace Checkout\Tests\Reconciliation\Previous;
 
-use Checkout\Common\QueryFilterDateRange;
-use Checkout\PlatformType;
-use Checkout\Reconciliation\Previous\ReconciliationClient;
-use Checkout\Reconciliation\Previous\ReconciliationQueryPaymentsFilter;
+use Checkout\Tamara\Common\QueryFilterDateRange;
+use Checkout\Tamara\PlatformType;
+use Checkout\Tamara\Reconciliation\Previous\ReconciliationClient;
+use Checkout\Tamara\Reconciliation\Previous\ReconciliationQueryPaymentsFilter;
 use Checkout\Tests\UnitTestFixture;
 
 class ReconciliationClientTest extends UnitTestFixture
 {
     /**
-     * @var ReconciliationClient $client
+     * @var \Checkout\Tamara\Reconciliation\Previous\ReconciliationClient $client
      */
     private $client;
 
@@ -36,7 +36,7 @@ class ReconciliationClientTest extends UnitTestFixture
             ->method("query")
             ->willReturn("foo");
 
-        $response = $this->client->queryPaymentsReport(new ReconciliationQueryPaymentsFilter());
+        $response = $this->client->queryPaymentsReport(new \Checkout\Tamara\Reconciliation\Previous\ReconciliationQueryPaymentsFilter());
         $this->assertNotNull($response);
     }
 

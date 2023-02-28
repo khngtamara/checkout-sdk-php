@@ -2,23 +2,23 @@
 
 namespace Checkout\Tests\Transfers;
 
-use Checkout\CheckoutApiException;
-use Checkout\CheckoutArgumentException;
-use Checkout\CheckoutAuthorizationException;
-use Checkout\CheckoutException;
-use Checkout\PlatformType;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\CheckoutArgumentException;
+use Checkout\Tamara\CheckoutAuthorizationException;
+use Checkout\Tamara\CheckoutException;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\SandboxTestFixture;
-use Checkout\Transfers\CreateTransferRequest;
-use Checkout\Transfers\TransferDestination;
-use Checkout\Transfers\TransferSource;
-use Checkout\Transfers\TransferType;
+use Checkout\Tamara\Transfers\CreateTransferRequest;
+use Checkout\Tamara\Transfers\TransferDestination;
+use Checkout\Tamara\Transfers\TransferSource;
+use Checkout\Tamara\Transfers\TransferType;
 
 class TransfersIntegrationTest extends SandboxTestFixture
 {
     /**
      * @before
      * @throws CheckoutAuthorizationException
-     * @throws CheckoutArgumentException
+     * @throws \Checkout\Tamara\CheckoutArgumentException
      * @throws CheckoutException
      */
     public function before()
@@ -32,14 +32,14 @@ class TransfersIntegrationTest extends SandboxTestFixture
      */
     public function shouldInitiateAndRetrieveTransferOfFunds()
     {
-        $transferSource = new TransferSource();
+        $transferSource = new \Checkout\Tamara\Transfers\TransferSource();
         $transferSource->id = "ent_kidtcgc3ge5unf4a5i6enhnr5m";
         $transferSource->amount = 100;
 
         $transferDestination = new TransferDestination();
         $transferDestination->id = "ent_w4jelhppmfiufdnatam37wrfc4";
 
-        $transferRequest = new CreateTransferRequest();
+        $transferRequest = new \Checkout\Tamara\Transfers\CreateTransferRequest();
         $transferRequest->transfer_type = TransferType::$commission;
         $transferRequest->source = $transferSource;
         $transferRequest->destination = $transferDestination;
@@ -71,10 +71,10 @@ class TransfersIntegrationTest extends SandboxTestFixture
         $transferSource->id = "ent_kidtcgc3ge5unf4a5i6enhnr5m";
         $transferSource->amount = 100;
 
-        $transferDestination = new TransferDestination();
+        $transferDestination = new \Checkout\Tamara\Transfers\TransferDestination();
         $transferDestination->id = "ent_w4jelhppmfiufdnatam37wrfc4";
 
-        $transferRequest = new CreateTransferRequest();
+        $transferRequest = new \Checkout\Tamara\Transfers\CreateTransferRequest();
         $transferRequest->transfer_type = TransferType::$commission;
         $transferRequest->source = $transferSource;
         $transferRequest->destination = $transferDestination;

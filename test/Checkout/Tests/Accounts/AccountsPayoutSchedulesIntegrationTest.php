@@ -2,20 +2,20 @@
 
 namespace Checkout\Tests\Accounts;
 
-use Checkout\Accounts\DaySchedule;
-use Checkout\Accounts\ScheduleFrequencyDailyRequest;
-use Checkout\Accounts\ScheduleFrequencyMonthlyRequest;
-use Checkout\Accounts\ScheduleFrequencyWeeklyRequest;
-use Checkout\Accounts\UpdateScheduleRequest;
-use Checkout\CheckoutApi;
-use Checkout\CheckoutApiException;
-use Checkout\CheckoutArgumentException;
-use Checkout\CheckoutAuthorizationException;
-use Checkout\CheckoutException;
-use Checkout\CheckoutSdk;
-use Checkout\Common\Currency;
-use Checkout\OAuthScope;
-use Checkout\PlatformType;
+use Checkout\Tamara\Accounts\DaySchedule;
+use Checkout\Tamara\Accounts\ScheduleFrequencyDailyRequest;
+use Checkout\Tamara\Accounts\ScheduleFrequencyMonthlyRequest;
+use Checkout\Tamara\Accounts\ScheduleFrequencyWeeklyRequest;
+use Checkout\Tamara\Accounts\UpdateScheduleRequest;
+use Checkout\Tamara\CheckoutApi;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\CheckoutArgumentException;
+use Checkout\Tamara\CheckoutAuthorizationException;
+use Checkout\Tamara\CheckoutException;
+use Checkout\Tamara\CheckoutSdk;
+use Checkout\Tamara\Common\Currency;
+use Checkout\Tamara\OAuthScope;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\SandboxTestFixture;
 
 class AccountsPayoutSchedulesIntegrationTest extends SandboxTestFixture
@@ -35,16 +35,16 @@ class AccountsPayoutSchedulesIntegrationTest extends SandboxTestFixture
     /**
      * @test
      * @throws CheckoutApiException
-     * @throws CheckoutArgumentException
+     * @throws \Checkout\Tamara\CheckoutArgumentException
      * @throws CheckoutException
      */
     public function shouldUpdateAndRetrieveWeeklyPayoutSchedules()
     {
         $this->markTestSkipped("unavailable");
-        $weeklyRequest = new ScheduleFrequencyWeeklyRequest();
-        $weeklyRequest->by_day = [DaySchedule::$FRIDAY, DaySchedule::$MONDAY];
+        $weeklyRequest = new \Checkout\Tamara\Accounts\ScheduleFrequencyWeeklyRequest();
+        $weeklyRequest->by_day = [\Checkout\Tamara\Accounts\DaySchedule::$FRIDAY, DaySchedule::$MONDAY];
 
-        $scheduleRequest = new UpdateScheduleRequest();
+        $scheduleRequest = new \Checkout\Tamara\Accounts\UpdateScheduleRequest();
         $scheduleRequest->enabled = true;
         $scheduleRequest->threshold = 1000;
         $scheduleRequest->recurrence = $weeklyRequest;
@@ -82,7 +82,7 @@ class AccountsPayoutSchedulesIntegrationTest extends SandboxTestFixture
         $this->markTestSkipped("unavailable");
         $dailyRequest = new ScheduleFrequencyDailyRequest();
 
-        $scheduleRequest = new UpdateScheduleRequest();
+        $scheduleRequest = new \Checkout\Tamara\Accounts\UpdateScheduleRequest();
         $scheduleRequest->enabled = true;
         $scheduleRequest->threshold = 1000;
         $scheduleRequest->recurrence = $dailyRequest;
@@ -119,7 +119,7 @@ class AccountsPayoutSchedulesIntegrationTest extends SandboxTestFixture
         $monthlyRequest = new ScheduleFrequencyMonthlyRequest();
         $monthlyRequest->by_month_day = [10, 5];
 
-        $scheduleRequest = new UpdateScheduleRequest();
+        $scheduleRequest = new \Checkout\Tamara\Accounts\UpdateScheduleRequest();
         $scheduleRequest->enabled = true;
         $scheduleRequest->threshold = 1000;
         $scheduleRequest->recurrence = $monthlyRequest;
@@ -147,7 +147,7 @@ class AccountsPayoutSchedulesIntegrationTest extends SandboxTestFixture
     }
 
     /**
-     * @return CheckoutApi
+     * @return \Checkout\Tamara\CheckoutApi
      * @throws CheckoutArgumentException
      * @throws CheckoutException
      */

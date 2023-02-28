@@ -2,19 +2,19 @@
 
 namespace Checkout\Tests\Workflows;
 
-use Checkout\CheckoutApiException;
-use Checkout\Workflows\Actions\WebhookSignature;
-use Checkout\Workflows\Actions\WebhookWorkflowActionRequest;
-use Checkout\Workflows\Conditions\EventWorkflowConditionRequest;
-use Checkout\Workflows\Conditions\WorkflowConditionType;
-use Checkout\Workflows\UpdateWorkflowRequest;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\Workflows\Actions\WebhookSignature;
+use Checkout\Tamara\Workflows\Actions\WebhookWorkflowActionRequest;
+use Checkout\Tamara\Workflows\Conditions\EventWorkflowConditionRequest;
+use Checkout\Tamara\Workflows\Conditions\WorkflowConditionType;
+use Checkout\Tamara\Workflows\UpdateWorkflowRequest;
 use PHPUnit\Framework\AssertionFailedError;
 
 class WorkflowsIntegrationTest extends AbstractWorkflowIntegrationTest
 {
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldCreateAndGetWorkflows()
     {
@@ -76,13 +76,13 @@ class WorkflowsIntegrationTest extends AbstractWorkflowIntegrationTest
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldCreateAndUpdateWorkflow()
     {
         $workflow = $this->createWorkflow();
 
-        $updateWorkflowRequest = new UpdateWorkflowRequest();
+        $updateWorkflowRequest = new \Checkout\Tamara\Workflows\UpdateWorkflowRequest();
         $updateWorkflowRequest->name = "PHP testing";
         $updateWorkflowRequest->active = true;
 
@@ -96,7 +96,7 @@ class WorkflowsIntegrationTest extends AbstractWorkflowIntegrationTest
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldUpdateWorkflowAction()
     {
@@ -138,7 +138,7 @@ class WorkflowsIntegrationTest extends AbstractWorkflowIntegrationTest
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldUpdateWorkflowCondition()
     {

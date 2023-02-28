@@ -2,14 +2,14 @@
 
 namespace Checkout\Tests\Apm\Previous\Sepa;
 
-use Checkout\Apm\Previous\Sepa\SepaClient;
-use Checkout\PlatformType;
+use Checkout\Tamara\Apm\Previous\Sepa\SepaClient;
+use Checkout\Tamara\PlatformType;
 use Checkout\Tests\UnitTestFixture;
 
 class SepaClientTest extends UnitTestFixture
 {
     /**
-     * @var SepaClient
+     * @var \Checkout\Tamara\Apm\Previous\Sepa\SepaClient
      */
     private $client;
 
@@ -22,7 +22,7 @@ class SepaClientTest extends UnitTestFixture
     public function init()
     {
         $this->initMocks(PlatformType::$previous);
-        $this->client = new SepaClient($this->apiClient, $this->configuration);
+        $this->client = new \Checkout\Tamara\Apm\Previous\Sepa\SepaClient($this->apiClient, $this->configuration);
     }
 
     /**

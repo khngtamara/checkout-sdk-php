@@ -2,14 +2,14 @@
 
 namespace Checkout\Tests\Workflows;
 
-use Checkout\CheckoutApiException;
+use Checkout\Tamara\CheckoutApiException;
 use Checkout\Tests\Payments\AbstractPaymentsIntegrationTest;
-use Checkout\Workflows\Actions\WebhookSignature;
-use Checkout\Workflows\Actions\WebhookWorkflowActionRequest;
-use Checkout\Workflows\Conditions\EntityWorkflowConditionRequest;
-use Checkout\Workflows\Conditions\EventWorkflowConditionRequest;
-use Checkout\Workflows\Conditions\ProcessingChannelWorkflowConditionRequest;
-use Checkout\Workflows\CreateWorkflowRequest;
+use Checkout\Tamara\Workflows\Actions\WebhookSignature;
+use Checkout\Tamara\Workflows\Actions\WebhookWorkflowActionRequest;
+use Checkout\Tamara\Workflows\Conditions\EntityWorkflowConditionRequest;
+use Checkout\Tamara\Workflows\Conditions\EventWorkflowConditionRequest;
+use Checkout\Tamara\Workflows\Conditions\ProcessingChannelWorkflowConditionRequest;
+use Checkout\Tamara\Workflows\CreateWorkflowRequest;
 
 abstract class AbstractWorkflowIntegrationTest extends AbstractPaymentsIntegrationTest
 {
@@ -79,7 +79,7 @@ abstract class AbstractWorkflowIntegrationTest extends AbstractPaymentsIntegrati
 
     /**
      * @after
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function tearDownWorkflows()
     {

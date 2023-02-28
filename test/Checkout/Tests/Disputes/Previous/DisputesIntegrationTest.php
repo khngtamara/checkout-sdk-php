@@ -2,10 +2,10 @@
 
 namespace Checkout\Tests\Disputes\Previous;
 
-use Checkout\CheckoutApiException;
-use Checkout\Disputes\DisputeEvidenceRequest;
-use Checkout\Disputes\DisputesQueryFilter;
-use Checkout\Files\FileRequest;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\Disputes\DisputeEvidenceRequest;
+use Checkout\Tamara\Disputes\DisputesQueryFilter;
+use Checkout\Tamara\Files\FileRequest;
 use Checkout\Tests\Payments\Previous\AbstractPaymentsIntegrationTest;
 use Closure;
 use DateInterval;
@@ -16,7 +16,7 @@ class DisputesIntegrationTest extends AbstractPaymentsIntegrationTest
 {
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldQueryDisputes()
     {
@@ -54,7 +54,7 @@ class DisputesIntegrationTest extends AbstractPaymentsIntegrationTest
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldUploadFile()
     {
@@ -81,7 +81,7 @@ class DisputesIntegrationTest extends AbstractPaymentsIntegrationTest
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldGetDisputeSchemeFiles()
     {
@@ -99,7 +99,7 @@ class DisputesIntegrationTest extends AbstractPaymentsIntegrationTest
 
     /**
      * Disabled due the time that takes to finish, run on demand
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldTestFullDisputesWorkflow()
     {

@@ -2,15 +2,15 @@
 
 namespace Checkout\Tests\Payments;
 
-use Checkout\CheckoutApiException;
-use Checkout\Payments\CaptureRequest;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\Payments\CaptureRequest;
 use Closure;
 
 class CapturePaymentsIntegrationTest extends AbstractPaymentsIntegrationTest
 {
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldFullCaptureCardPayment()
     {
@@ -41,7 +41,7 @@ class CapturePaymentsIntegrationTest extends AbstractPaymentsIntegrationTest
 
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldPartiallyCaptureCardPayment()
     {
@@ -74,7 +74,7 @@ class CapturePaymentsIntegrationTest extends AbstractPaymentsIntegrationTest
     }
 
     /**
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldCaptureCardPaymentIdempotently()
     {

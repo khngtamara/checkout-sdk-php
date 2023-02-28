@@ -2,46 +2,46 @@
 
 namespace Checkout\Tests\Payments;
 
-use Checkout\CheckoutApiException;
-use Checkout\CheckoutSdk;
-use Checkout\Common\AccountHolder;
-use Checkout\Common\Address;
-use Checkout\Common\Country;
-use Checkout\Common\Currency;
-use Checkout\Common\CustomerRequest;
-use Checkout\Common\Phone;
-use Checkout\Common\Product;
-use Checkout\Environment;
-use Checkout\Payments\BillingPlan;
-use Checkout\Payments\BillingPlanType;
-use Checkout\Payments\PaymentCustomerRequest;
-use Checkout\Payments\ProcessingSettings;
-use Checkout\Payments\Request\PaymentRequest;
-use Checkout\Payments\Request\Source\Apm\FawryProduct;
-use Checkout\Payments\Request\Source\Apm\RequestAfterPaySource;
-use Checkout\Payments\Request\Source\Apm\RequestAlipayPlusSource;
-use Checkout\Payments\Request\Source\Apm\RequestAlmaSource;
-use Checkout\Payments\Request\Source\Apm\RequestBancontactSource;
-use Checkout\Payments\Request\Source\Apm\RequestBenefitSource;
-use Checkout\Payments\Request\Source\Apm\RequestCvConnectSource;
-use Checkout\Payments\Request\Source\Apm\RequestEpsSource;
-use Checkout\Payments\Request\Source\Apm\RequestFawrySource;
-use Checkout\Payments\Request\Source\Apm\RequestGiropaySource;
-use Checkout\Payments\Request\Source\Apm\RequestIdealSource;
-use Checkout\Payments\Request\Source\Apm\RequestIllicadoSource;
-use Checkout\Payments\Request\Source\Apm\RequestKlarnaSource;
-use Checkout\Payments\Request\Source\Apm\RequestKnetSource;
-use Checkout\Payments\Request\Source\Apm\RequestMbwaySource;
-use Checkout\Payments\Request\Source\Apm\RequestMultiBancoSource;
-use Checkout\Payments\Request\Source\Apm\RequestP24Source;
-use Checkout\Payments\Request\Source\Apm\RequestPayPalSource;
-use Checkout\Payments\Request\Source\Apm\RequestPostFinanceSource;
-use Checkout\Payments\Request\Source\Apm\RequestQPaySource;
-use Checkout\Payments\Request\Source\Apm\RequestSofortSource;
-use Checkout\Payments\Request\Source\Apm\RequestStcPaySource;
-use Checkout\Payments\Request\Source\Apm\RequestTamaraSource;
-use Checkout\Payments\Request\Source\Apm\RequestTrustlySource;
-use Checkout\Payments\Request\Source\Apm\RequestSepaSource;
+use Checkout\Tamara\CheckoutApiException;
+use Checkout\Tamara\CheckoutSdk;
+use Checkout\Tamara\Common\AccountHolder;
+use Checkout\Tamara\Common\Address;
+use Checkout\Tamara\Common\Country;
+use Checkout\Tamara\Common\Currency;
+use Checkout\Tamara\Common\CustomerRequest;
+use Checkout\Tamara\Common\Phone;
+use Checkout\Tamara\Common\Product;
+use Checkout\Tamara\Environment;
+use Checkout\Tamara\Payments\BillingPlan;
+use Checkout\Tamara\Payments\BillingPlanType;
+use Checkout\Tamara\Payments\PaymentCustomerRequest;
+use Checkout\Tamara\Payments\ProcessingSettings;
+use Checkout\Tamara\Payments\Request\PaymentRequest;
+use Checkout\Tamara\Payments\Request\Source\Apm\FawryProduct;
+use Checkout\Tamara\Payments\Request\Source\Apm\RequestAfterPaySource;
+use Checkout\Tamara\Payments\Request\Source\Apm\RequestAlipayPlusSource;
+use Checkout\Tamara\Payments\Request\Source\Apm\RequestAlmaSource;
+use Checkout\Tamara\Payments\Request\Source\Apm\RequestBancontactSource;
+use Checkout\Tamara\Payments\Request\Source\Apm\RequestBenefitSource;
+use Checkout\Tamara\Payments\Request\Source\Apm\RequestCvConnectSource;
+use Checkout\Tamara\Payments\Request\Source\Apm\RequestEpsSource;
+use Checkout\Tamara\Payments\Request\Source\Apm\RequestFawrySource;
+use Checkout\Tamara\Payments\Request\Source\Apm\RequestGiropaySource;
+use Checkout\Tamara\Payments\Request\Source\Apm\RequestIdealSource;
+use Checkout\Tamara\Payments\Request\Source\Apm\RequestIllicadoSource;
+use Checkout\Tamara\Payments\Request\Source\Apm\RequestKlarnaSource;
+use Checkout\Tamara\Payments\Request\Source\Apm\RequestKnetSource;
+use Checkout\Tamara\Payments\Request\Source\Apm\RequestMbwaySource;
+use Checkout\Tamara\Payments\Request\Source\Apm\RequestMultiBancoSource;
+use Checkout\Tamara\Payments\Request\Source\Apm\RequestP24Source;
+use Checkout\Tamara\Payments\Request\Source\Apm\RequestPayPalSource;
+use Checkout\Tamara\Payments\Request\Source\Apm\RequestPostFinanceSource;
+use Checkout\Tamara\Payments\Request\Source\Apm\RequestQPaySource;
+use Checkout\Tamara\Payments\Request\Source\Apm\RequestSofortSource;
+use Checkout\Tamara\Payments\Request\Source\Apm\RequestStcPaySource;
+use Checkout\Tamara\Payments\Request\Source\Apm\RequestTamaraSource;
+use Checkout\Tamara\Payments\Request\Source\Apm\RequestTrustlySource;
+use Checkout\Tamara\Payments\Request\Source\Apm\RequestSepaSource;
 use Closure;
 use Exception;
 
@@ -193,7 +193,7 @@ class RequestApmPaymentsIntegrationTest extends AbstractPaymentsIntegrationTest
         $requestSource = new RequestTamaraSource();
         $requestSource->billing_address = $address;
 
-        $processing = new ProcessingSettings();
+        $processing = new \Checkout\Tamara\Payments\ProcessingSettings();
         $processing->aft = true;
         $processing->shipping_amount = 1000;
         $processing->tax_amount = 500;
@@ -259,14 +259,14 @@ class RequestApmPaymentsIntegrationTest extends AbstractPaymentsIntegrationTest
     {
         $requestSource = new RequestPayPalSource();
 
-        $plan = new BillingPlan();
-        $plan->type = BillingPlanType::$channel_initiated_billing;
+        $plan = new \Checkout\Tamara\Payments\BillingPlan();
+        $plan->type = \Checkout\Tamara\Payments\BillingPlanType::$channel_initiated_billing;
         $plan->skip_shipping_address = true;
         $plan->immutable_shipping_address = false;
 
         $requestSource->plan = $plan;
 
-        $product = new \Checkout\Payments\Product();
+        $product = new \Checkout\Tamara\Payments\Product();
         $product->name = "laptop";
         $product->unit_price = 10;
         $product->quantity = 1;

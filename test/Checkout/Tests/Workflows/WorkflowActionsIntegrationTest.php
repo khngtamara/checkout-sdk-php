@@ -2,13 +2,13 @@
 
 namespace Checkout\Tests\Workflows;
 
-use Checkout\CheckoutApiException;
+use Checkout\Tamara\CheckoutApiException;
 
 class WorkflowActionsIntegrationTest extends AbstractWorkflowIntegrationTest
 {
     /**
      * @test
-     * @throws CheckoutApiException
+     * @throws \Checkout\Tamara\CheckoutApiException
      */
     public function shouldGetActionInvocations()
     {
